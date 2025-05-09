@@ -26,7 +26,7 @@ const Main = () => {
   };
 
   return (
-    <div className="relative w-full overflow-hidden mt-10 border-4 border-yellow-500">
+    <div className="relative w-full overflow-hidden mt-25 border-4 border-yellow-500 ">
       <div
         className="flex transition-transform duration-700 ease-in-out"
         style={{ transform: `translateX(-${index * 100}%)` }}

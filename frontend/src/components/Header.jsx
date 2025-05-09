@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router";
+import { Link ,NavLink } from "react-router";
 import { IoMdHome } from "react-icons/io";
 import { MdEventNote } from "react-icons/md";
 import { IoInformationCircle } from "react-icons/io5";
@@ -14,7 +14,7 @@ const Header = () => {
 
   return (
     <div
-      className={`fixed top-0 left-0 w-full bg-white shadow-md transition-all duration-300 z-50 ${
+      className={` fixed top-0 left-0 w-full bg-white shadow-md transition-all duration-300 z-50 ${
         menuOpen ? "pb-4" : ""
       }`}
     >
@@ -40,29 +40,29 @@ const Header = () => {
           } flex-col md:flex md:flex-row items-center gap-5 md:gap-8 text-lg md:text-base mt-3 md:mt-0`}
         >
           <li className="hover:text-blue-600">
-            <Link to="/" className="flex items-center gap-1 pl-10">
+            <NavLink to="/" className="flex items-center gap-1 pl-10">
               <IoMdHome size="1.3rem" /> Home
-            </Link>
+            </NavLink>
           </li>
           <li className="hover:text-blue-600">
-            <Link to="/events" className="flex items-center gap-1">
+            <NavLink to="/events" className="flex items-center gap-1">
               <MdEventNote size="1.3rem" /> Events
-            </Link>
+            </NavLink>
           </li>
           <li className="hover:text-blue-600">
-            <Link to="/about" className="flex items-center gap-1">
+            <NavLink to="/about" className="flex items-center gap-1">
               <IoInformationCircle size="1.3rem" /> AboutUs
-            </Link>
+            </NavLink>
           </li>
           <li className="hover:text-blue-600">
-            <Link to="/members" className="flex items-center gap-1">
+            <NavLink to="/members" className="flex items-center gap-1">
               <FaPeopleGroup size="1.3rem" /> Members
-            </Link>
+            </NavLink>
           </li>
           <li className="hover:text-blue-600">
-            <Link to="/contact" className="flex items-center gap-1">
+            <NavLink to="/contact" className="flex items-center gap-1">
               <RiContactsBookFill size="1.3rem" /> ContactUs
-            </Link>
+            </NavLink>
           </li>
         </ul>
 

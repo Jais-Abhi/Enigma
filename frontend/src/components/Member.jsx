@@ -60,7 +60,7 @@ const MemberCard = ({ member }) => (
 
 const MemberSlider = () => {
   return (
-    <div className="max-w-7xl mx-auto px-4 my-12">
+    <div className="max-w-7xl mx-auto px-4 my-12 mt-30">
       <h2 className="text-3xl font-bold text-center mb-4">OUR MEMBERS</h2>
       <p className="text-center text-gray-500 mb-6">
         We are glad to introduce our professional members

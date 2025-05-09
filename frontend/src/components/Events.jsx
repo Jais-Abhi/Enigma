@@ -5,25 +5,25 @@ const events = [
     title: "Web Dev Workshop",
     date: "May 15, 2025",
     description: "Hands-on session on HTML, CSS, JS and React basics.",
-    image: "#",
+    image: "/event-1.jpg",
   },
   {
     title: "AI/ML Bootcamp",
     date: "June 5–7, 2025",
     description: "3-day bootcamp exploring Machine Learning & AI fundamentals.",
-    image: "#",
+    image: "/event-2.jpg",
   },
   {
     title: "Hackathon 2.0",
     date: "July 20–21, 2025",
     description: "24-hour coding marathon for innovation and creativity.",
-    image: "#",
+    image: "event-3.jpg",
   },
 ];
 
 const Events = () => {
   return (
-    <div className="bg-white px-4 md:px-6 pt-6 pb-10">
+    <div className="bg-white px-4 md:px-6 pt-6 pb-10 mt-20">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-2xl md:text-4xl font-bold text-center text-gray-800 mb-8">
           Upcoming Events
