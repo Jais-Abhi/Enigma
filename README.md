@@ -13,6 +13,6 @@
 make changes in your code
 
     check branch : git branch
-    create your own branch with your name : git branch -m "your_name"     ---> adarsh_kumar
+    create your own branch with your name : git branch -m "your_name"    
     check your updated branch : git branch
 
