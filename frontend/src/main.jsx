@@ -8,7 +8,7 @@ import Events from './components/Events.jsx'
 import MemberSlider from './components/Member.jsx'
 import Contact from './components/contact.jsx'
 import About from './components/About.jsx'
-import Main from './components/Main.jsx'
+import Main from './components/main/Main.jsx'
 import Gallery from './components/Gallery.jsx'
 const router = createBrowserRouter([
   {
@@ -18,7 +18,7 @@ const router = createBrowserRouter([
       [
         {
           path: "",
-          element: [<Main />,<About />,<Events /> , <MemberSlider />,<Gallery/>]
+          element: <Main />
         },
         {
           path: "/events",

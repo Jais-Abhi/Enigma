@@ -27,15 +27,6 @@ function Contact() {
         </select>
       </div>
 
-
-      {/* <div>
-        <label class="block text-sm font-medium text-gray-700 mb-1">Description that fits you<span class="text-red-500">*</span></label>
-        <select class="w-full border border-gray-300 rounded px-3 py-2">
-          <option>Choose one option...</option>
-        </select>
-      </div> */}
-
-
       <div>
         <label class="block text-sm font-medium text-gray-700 mb-1">Full Name<span class="text-red-500">*</span></label>
         <input type="text" placeholder="Enter your full name..." class="w-full border border-gray-300 rounded px-3 py-2" />
@@ -45,13 +36,6 @@ function Contact() {
         <label class="block text-sm font-medium text-gray-700 mb-1">E-mail<span class="text-red-500">*</span></label>
         <input type="email" placeholder="Enter your email address..." class="w-full border border-gray-300 rounded px-3 py-2" />
       </div>
-
-   
-      {/* <div>
-        <label class="block text-sm font-medium text-gray-700 mb-1">Inquiry Purpose</label>
-        <input type="text" placeholder="Enter your organization..." class="w-full border border-gray-300 rounded px-3 py-2" />
-      </div> */}
-
    
       <div>
         <label class="block text-sm font-medium text-gray-700 mb-1">Phone Number<span class="text-red-500">*</span></label>

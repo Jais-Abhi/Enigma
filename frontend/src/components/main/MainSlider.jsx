@@ -7,7 +7,7 @@ const images = [
   "/slider3.jpg",
 ];
 
-const Main = () => {
+const MainSlider = () => {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const Main = () => {
   };
 
   return (
-    <div className="relative w-full overflow-hidden mt-25 border-4 border-yellow-500 ">
+    <div className="relative w-full overflow-hidden mt-20 border-4 border-yellow-500 ">
       <div
         className="flex transition-transform duration-700 ease-in-out"
         style={{ transform: `translateX(-${index * 100}%)` }}
@@ -76,4 +76,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default MainSlider;
