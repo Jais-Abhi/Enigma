@@ -1,10 +1,21 @@
 import React, { useState, useEffect } from "react";
 
-
-const images = [
-  "/slider1.jpg",
-  "/slider2.jpg",
-  "/slider3.jpg",
+const slides = [
+  {
+    image: "/slider1.jpg",
+    title: "Welcome to Our Portal",
+    subtitle: "All Team members",
+  },
+  {
+    image: "/slider2.jpg",
+    title: "Workshop on Cyber Security",
+    subtitle: "organize by cyber Security Members",
+  },
+  {
+    image: "/slider3.jpg",
+    title: "Workshop on Cyber Security",
+    subtitle: "organize by cyber Security Members",
+  },
 ];
 
 const MainSlider = () => {
@@ -12,29 +23,37 @@ const MainSlider = () => {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setIndex((prev) => (prev + 1) % images.length);
+      setIndex((prev) => (prev + 1) % slides.length);
     }, 4000);
     return () => clearInterval(timer);
   }, []);
 
   const prevSlide = () => {
-    setIndex((index - 1 + images.length) % images.length);
+    setIndex((index - 1 + slides.length) % slides.length);
   };
 
   const nextSlide = () => {
-    setIndex((index + 1) % images.length);
+    setIndex((index + 1) % slides.length);
   };
 
   return (
-    <div className="relative w-full overflow-hidden mt-20 border-4 border-yellow-500 ">
+    <div className="relative w-full overflow-hidden mt-20 border-4 border-yellow-500">
+      <div className="absolute top-1/3 w-full text-center z-20 px-4">
+        <h2 className="text-white text-3xl md:text-5xl font-bold drop-shadow-lg">
+          {slides[index].title}
+        </h2>
+        <p className="text-white text-lg md:text-2xl mt-2 drop-shadow">
+          {slides[index].subtitle}
+        </p>
+      </div>
       <div
         className="flex transition-transform duration-700 ease-in-out"
         style={{ transform: `translateX(-${index * 100}%)` }}
       >
-        {images.map((img, idx) => (
+        {slides.map((slide, idx) => (
           <img
             key={idx}
-            src={img}
+            src={slide.image}
             alt={`Slide ${idx}`}
             className="min-w-full object-cover h-[300px] md:h-[600px] lg:h-[600px]"
           />
@@ -66,8 +85,6 @@ const MainSlider = () => {
           textDecoration: "none",
           fontWeight: "bold",
           boxShadow: "0 0 10px rgba(0,0,0,0.3)",
-         
-          
         }}
       >
         Registration
