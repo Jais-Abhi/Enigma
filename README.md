@@ -2,13 +2,13 @@
 
 ## Getting Started
     Fork the repo in your github acccount 
-    copy the HTTP link
+    copy the HTTPS link
     clone the repo
 
 ### Or
     
     git init
-    git clone HTTP link
+    git clone HTTPS link
 
 make changes in your code
 
