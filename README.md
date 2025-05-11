@@ -1,18 +1,18 @@
 # Enigma technical club
 
 ## Getting Started
-    Fork the repo in your github acccount
-    copy the link: https://github.com/rajk8292/enigma.git
+    Fork the repo in your github acccount 
+    copy the HTTP link
     clone the repo
 
 ### Or
     
     git init
-    git clone https://github.com/rajk8292/enigma.git
+    git clone HTTP link
 
 make changes in your code
 
     check branch : git branch
     create your own branch with your name : git branch -m "your_name"    
-    check your updated branch : git branch
+    check your updated branch : git branch 
 
