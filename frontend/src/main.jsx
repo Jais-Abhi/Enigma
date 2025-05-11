@@ -25,12 +25,16 @@ const router = createBrowserRouter([
           element: <Events />,
         },
         {
-          path: "/about",
-          element: <About />,
+          path: "/gallery",
+          element: <Gallery />,
         },
         {
           path: "/members",
           element: <MemberSlider />,
+        },
+        {
+          path: "/about",
+          element: <About />,
         },
         {
           path: "/contact",

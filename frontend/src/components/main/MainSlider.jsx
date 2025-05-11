@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-
+import { Link ,NavLink } from "react-router";
+import { FcBusinessContact } from "react-icons/fc";
+import { IoChatboxEllipses } from "react-icons/io5";
 const slides = [
   {
     image: "/slider1.jpg",
@@ -38,7 +40,7 @@ const MainSlider = () => {
 
   return (
     <div className="relative w-full overflow-hidden mt-20 border-4 border-yellow-500">
-      <div className="absolute top-1/3 w-full text-center z-20 px-4">
+      <div className="absolute bottom-0 p-4 w-full z-20 px-4">
         <h2 className="text-white text-3xl md:text-5xl font-bold drop-shadow-lg">
           {slides[index].title}
         </h2>
@@ -47,7 +49,7 @@ const MainSlider = () => {
         </p>
       </div>
       <div
-        className="flex transition-transform duration-700 ease-in-out"
+        className="flex transition-transform duration-800 ease-in-out"
         style={{ transform: `translateX(-${index * 100}%)` }}
       >
         {slides.map((slide, idx) => (
@@ -61,17 +63,17 @@ const MainSlider = () => {
       </div>
       <button
         onClick={prevSlide}
-        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black z-10"
+        className="absolute h-full top-1/2 left-0 transform -translate-y-1/2 bg-black/10 text-white p-2 rounded-full hover:bg-black/30 z-10"
       >
         ◀
       </button>
       <button
         onClick={nextSlide}
-        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black z-10"
+        className="absolute top-1/2 right-0 h-full transform -translate-y-1/2 bg-black/10 text-white p-2 rounded-full hover:bg-black/30 z-10"
       >
         ▶
       </button>
-      <a
+      {/* <a
         href="/register"
         style={{
           position: "fixed",
@@ -88,7 +90,10 @@ const MainSlider = () => {
         }}
       >
         Registration
-      </a>
+      </a> */}
+      <NavLink to="/contact" className=" fixed right-6 bottom-4 text-6xl z-50 p-4 " >
+      <IoChatboxEllipses />
+      </NavLink>
     </div>
   );
 };
