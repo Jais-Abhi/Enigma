@@ -91,8 +91,9 @@ const MainSlider = () => {
       >
         Registration
       </a> */}
-      <NavLink to="/contact" className=" fixed right-6 bottom-4 text-6xl z-50 p-4 " >
+      <NavLink to="/contact" className=" flex flex-col gap-0 fixed right-4 items-center bottom-4 text-5xl border-4 rounded-full bg-blue-100 animation-bounce  border-fuchsia-700 text-purple-700 z-50 p-4 " >
       <IoChatboxEllipses />
+      <span className="text-xs font-bold" >contact us</span>
       </NavLink>
     </div>
   );

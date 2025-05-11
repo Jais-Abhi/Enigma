@@ -11,7 +11,7 @@ const galleryImages = [
 
 const Gallery = () => {
   return (
-    <div className="max-w-6xl mx-auto my-16 px-4">
+    <div className="max-w-6xl mx-auto my-16 px-4 mt-25">
       <h2 className="text-3xl font-bold text-center mb-4">Our GALLERY</h2>
       <p className="text-center text-gray-500 mb-8">Memories from our latest events and Workshops</p>
 
