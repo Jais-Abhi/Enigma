@@ -4,11 +4,11 @@ const MainAbout = () => {
   return (
     <div className="bg-white flex justify-center md:px-16 py-6">
       <div className="flex flex-col md:flex-row items-start max-w-7xl w-full gap-10">
-        <div className="w-full md:w-1/2 text-center md:text-left">
+        <div className="w-full md:w-full text-center md:text-left">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">ABOUT US</h2>
-          <div className="h-1 w-20 bg-cyan-500 mx-auto md:mx-0 mb-6"></div>
+          <div className="h-1 w-30 bg-cyan-300 mx-auto md:mx-0 mb-6"></div>
 
-          <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+          <h1 className="text-2xl md:text-3xl text-gray-900 mb-4">
             Welcome to Enigma Technical Club
           </h1>
           <p className="text-gray-600 text-lg mb-4">
@@ -28,13 +28,6 @@ const MainAbout = () => {
             <li>✔ Collaborate with alumni and industry professionals.</li>
             <li>✔ Run a Quiz Portal and showcase student innovation.</li>
           </ul>
-        </div>
-        <div className="w-full md:w-1/2 flex justify-center">
-          <img
-            src="/enigma.png"
-            alt="Enigma"
-            className="max-w-md w-full rounded-xl shadow-lg"
-          />
         </div>
       </div>
     </div>
