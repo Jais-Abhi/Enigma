@@ -27,11 +27,11 @@ const CommitteeSlider = ({ members, groupTitles }) => {
   useEffect(() => {
     const updateVisibleCount = () => {
       if (window.innerWidth < 640) {
-        setVisibleCount(2);
+        setVisibleCount(2); // Show 2 items on smaller screens
       } else if (window.innerWidth < 1024) {
-        setVisibleCount(4);
+        setVisibleCount(4); // Show 4 items on medium screens
       } else {
-        setVisibleCount(4);
+        setVisibleCount(4); // Show 4 items on larger screens
       }
     };
     updateVisibleCount();
@@ -86,7 +86,7 @@ const CommitteeSlider = ({ members, groupTitles }) => {
             return (
               <div key={i} className="flex flex-col items-center mx-2 sm:mx-6">
                 <p className="text-base sm:text-lg font-semibold text-blue-700 mb-2 text-center">{title}</p>
-                <div className="flex flex-col sm:flex-row items-center sm:items-start">
+                <div className="flex flex-wrap justify-center">
                   {group.map((member, index) => (
                     <CommitteeCard key={index} {...member} />
                   ))}
