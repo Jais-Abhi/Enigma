@@ -135,8 +135,8 @@ function App() {
   ];
 
   return (
-    <div className="min-h-300px bg-gray-100 p-4 sm:p-6 flex flex-col justify-center" style={{ marginTop: '40px', marginBottom: '40px' }}>
-      <h1 className="text-3xl sm:text-4xl font-bold text-center text-blue-900 mb-8 sm:mb-30">
+    <div className="min-h-[350px] bg-gray-100 p-4 sm:p-6 flex flex-col justify-center" style={{ marginTop: '40px', marginBottom: '40px' }}>
+      <h1 className="text-3xl sm:text-4xl font-bold text-center text-blue-900 mb-8 sm:mb-10">
         Committee Members
       </h1>
       <CommitteeSlider members={designCommittee} groupTitles={groupTitles} />
