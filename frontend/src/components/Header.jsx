@@ -8,6 +8,7 @@ import { RiContactsBookFill } from "react-icons/ri";
 import { IoLogIn } from "react-icons/io5";
 import { SiSimplelogin } from "react-icons/si";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
+import { IoChatboxEllipses } from "react-icons/io5";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -86,6 +87,7 @@ const Header = () => {
           </button>
         </div> */}
       </div>
+
     </div>
   );
 };

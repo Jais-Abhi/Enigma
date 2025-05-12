@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link ,NavLink } from "react-router";
 import { FcBusinessContact } from "react-icons/fc";
-import { IoChatboxEllipses } from "react-icons/io5";
+
 const slides = [
   {
     image: "/slider1.jpg",
@@ -91,10 +91,7 @@ const MainSlider = () => {
       >
         Registration
       </a> */}
-      <NavLink to="/contact" className=" flex flex-col gap-0 fixed right-4 items-center bottom-4 text-5xl border-4 rounded-full bg-blue-100 animation-bounce  border-fuchsia-700 text-purple-700 z-50 p-4 " >
-      <IoChatboxEllipses />
-      <span className="text-xs font-bold" >contact us</span>
-      </NavLink>
+
     </div>
   );
 };
