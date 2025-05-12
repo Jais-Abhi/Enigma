@@ -18,7 +18,7 @@ const Header = () => {
         menuOpen ? "pb-4" : ""
       }`}
     >
-      <div className="flex flex-col md:flex-row justify-between items-center px-4">
+      <div className="flex flex-col md:flex-row gap-20 items-center px-4">
         <div className="flex justify-between items-center w-full md:w-auto">
           <Link to="/" className="flex items-center gap-2">
             <img src="/enigma.png" alt="logo" className="h-16 md:h-20" />
@@ -50,23 +50,28 @@ const Header = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/about" className={({ isActive }) => `flex items-center p-1 border-3 rounded-xl border-transparent ${isActive ? "text-blue-700" : "hover:text-blue-800 hover:border-blue-800 hover:transition-all hover:duration-700"}`}>
-              <IoInformationCircle size="1.3rem" /> AboutUs
+            <NavLink to="/gallery" className={({ isActive }) => `flex items-center p-1 border-3 rounded-xl border-transparent ${isActive ? "text-blue-700" : "hover:text-blue-800 hover:border-blue-800 hover:transition-all hover:duration-700"}`}>
+              <IoInformationCircle size="1.3rem" /> Gallery
             </NavLink>
           </li>
           <li>
-            <NavLink to="/members" className={({ isActive }) => `flex items-center p-1 border-3 rounded-xl border-transparent ${isActive ? "text-blue-700" : "hover:text-blue-800 hover:border-blue-800 hover:transition-all hover:duration-700"}`}>
+            <NavLink to="/members" className={({ isActive }) => `flex items-center p-1 gap-1 border-3 rounded-xl border-transparent ${isActive ? "text-blue-700" : "hover:text-blue-800 hover:border-blue-800 hover:transition-all hover:duration-700"}`}>
               <FaPeopleGroup size="1.3rem" /> Members
             </NavLink>
           </li>
           <li>
+            <NavLink to="/about" className={({ isActive }) => `flex items-center p-1 border-3 rounded-xl border-transparent ${isActive ? "text-blue-700" : "hover:text-blue-800 hover:border-blue-800 hover:transition-all hover:duration-700"}`}>
+              <IoInformationCircle size="1.3rem" /> AboutUs
+            </NavLink>
+          </li>
+          {/* <li>
             <NavLink to="/contact" className={({ isActive }) => `flex items-center p-1 border-3 rounded-xl border-transparent ${isActive ? "text-blue-700" : "hover:text-blue-800 hover:border-blue-800 hover:transition-all hover:duration-700"}`}>
               <RiContactsBookFill size="1.3rem" /> ContactUs
             </NavLink>
-          </li>
+          </li> */}
         </ul>
 
-        <div
+        {/* <div
           className={`${
             menuOpen ? "flex" : "hidden"
           } md:flex flex-wrap justify-center items-center gap-5 mt-3 md:mt-0`}
@@ -79,7 +84,7 @@ const Header = () => {
             <SiSimplelogin size="1.3rem" />
             Sign Up
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );
