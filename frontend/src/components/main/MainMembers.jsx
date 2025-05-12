@@ -136,7 +136,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-100 p-4 sm:p-6">
-      <h1 className="text-3xl sm:text-4xl font-bold text-center text-blue-900 mb-12 sm:mb-20 mt-10 sm:mt-20">
+      <h1 className="text-3xl sm:text-4xl font-bold text-center text-blue-900 mb-12 sm:mb-10 mt-10 sm:mt-20">
         Committee Members
       </h1>
       <CommitteeSlider members={designCommittee} groupTitles={groupTitles} />
