@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import dotenv from "dotenv";
 import authRouter from "./routes/auth/auth-route.js";
+import eventRouter from "./routes/event/event-route.js";
 dotenv.config();
 
 const DBURL = process.env.DB_URL;
@@ -36,5 +37,6 @@ app.use(cookieParser());
 app.use(express.json());
 
 app.use("/api/auth", authRouter);
+app.use("/api/event", eventRouter);
 
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
