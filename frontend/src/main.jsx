@@ -11,7 +11,6 @@ import About from "./components/About.jsx";
 import Main from "./components/main/Main.jsx";
 import Gallery from "./components/Gallery.jsx";
 import Header from "./components/Header.jsx";
-// import Dashboard from "./components/Dashboard.jsx";
 import AdminDashboard from "./components/AdminDashboard.jsx";
 import Login from "./components/Login.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";

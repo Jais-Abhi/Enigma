@@ -3,10 +3,9 @@ import Header from "./Header";
 import { validateData } from "../utils/validate";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux'; // ✔️ This is the correct source
-
+import { addUser } from "../slices/userSlice";
 import { BaseUrl } from "../utils/constant";
 import axios from "axios";
-import { addUserToStore } from "../slices/userSlice";
 
 const Login = () => {
   const [IsLoginInForm, setIsLoginInForm] = useState(true);
@@ -56,7 +55,8 @@ const Login = () => {
           setEmail("");
           setPassword("");
           setMessage(response.data.message);
-          dispatch(addUserToStore(response.data.user))
+          // dispatch(addUserToStore(response.data.user))
+          dispatch(addUser(response.data.user))
         } else {
           setErrMessage(response.data.message);
         }
