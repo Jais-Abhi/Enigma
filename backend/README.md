@@ -3,6 +3,7 @@ START BACKEND
     add 
         -DB_URL="mongoDB url"
         -PORT=5000 or any port which is available
+        -CLIENT_SECRET_KEY="secret key"
     
 
     run command

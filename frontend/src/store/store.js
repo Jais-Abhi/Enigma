@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import responsiveReducer from "../slices/responsiveSlice";
+import userReducer from "../slices/userSlice";
 
 const store = configureStore({
   reducer: {
-    responsive: responsiveReducer,
+    user: userReducer,
   },
 });
 
