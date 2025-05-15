@@ -9,7 +9,6 @@ const CLIENT_SECRET_KEY = process.env.CLIENT_SECRET_KEY;
 //Register User
 const registerUser = async (req, res) => {
   const { name, email, password } = req.body;
-
   try {
     const checkUser = await User.findOne({ email });
     if (checkUser)
@@ -26,9 +25,10 @@ const registerUser = async (req, res) => {
     });
 
     await newUser.save();
+    const user = await User.findOne({ email });
     res.status(200).json({
       success: true,
-      message: "Registration successful",
+      message: "Registration successful Please login to continue",
     });
   } catch (e) {
     res.status(500).json({
