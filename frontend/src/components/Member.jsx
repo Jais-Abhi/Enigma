@@ -6,16 +6,15 @@ const fadeIn = {
   visible: (i) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.3 },
+    transition: { delay: i * 0.2 },
   }),
 };
-
 const CommitteeCard = ({ title, members, index }) => (
   <motion.div
     className="mb-10 border-b"
     initial="hidden"
     whileInView="visible"
-    viewport={{ once: true }}
+    // viewport={{ once: true }}
     variants={fadeIn}
     custom={index}
   >
@@ -25,12 +24,14 @@ const CommitteeCard = ({ title, members, index }) => (
     <div className="grid gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 bg-white">
       {members.map((member, i) => (
         <motion.div
+          whileHover={{scale:3}}
           key={i}
           className="bg-gray-50 p-4 rounded-xl shadow text-center hover:shadow-md transition"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ delay: i * 0.2 }}
+          
         >
           <img
             src={
@@ -43,6 +44,7 @@ const CommitteeCard = ({ title, members, index }) => (
           />
           <h3 className="text-lg font-bold text-gray-800">{member.name}</h3>
           <p className="text-sm text-gray-500">{member.role}</p>
+
         </motion.div>
       ))}
     </div>

@@ -6,13 +6,14 @@ import Home from './pages/Home.jsx'
 import { Route,createBrowserRouter,createRoutesFromElements,createRoutesFromChildren, RouterProvider } from 'react-router'
 import Events from './components/Events.jsx'
 import MemberSlider from './components/Member.jsx'
-import Contact from './components/contact.jsx'
+// import Contact from './components/contact.jsx'
 import About from './components/About.jsx'
 import Main from './components/main/Main.jsx'
 import Gallery from './components/Gallery.jsx'
 import Header from './components/Header.jsx'
-import Dashboard from './components/Dashboard.jsx'
 import Login from './components/Login.jsx'
+import AdminDashboard from './components/AdminDashboard.jsx'
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -41,7 +42,7 @@ const router = createBrowserRouter([
         },
         {
           path:"/admin/dashboard",
-          element:<Dashboard />
+          element:<AdminDashboard />
         }
       ]
     )
