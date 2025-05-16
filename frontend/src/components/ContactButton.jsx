@@ -5,7 +5,7 @@ import Contact from './contact';
 const ContactButton = () => {
     let [OnContact,setOnContact] = useState(false)
     let ContactActive = (event)=>{
-        console.log(event)
+        // console.log(event)
         setOnContact(event)
     }
   return (

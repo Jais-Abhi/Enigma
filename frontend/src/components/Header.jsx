@@ -1,95 +1,99 @@
-import React, { useState } from "react";
-import { Link ,NavLink } from "react-router";
-import { IoMdHome } from "react-icons/io";
-import { MdEventNote } from "react-icons/md";
-import { IoInformationCircle } from "react-icons/io5";
-import { FaPeopleGroup } from "react-icons/fa6";
-import { RiContactsBookFill } from "react-icons/ri";
-import { IoLogIn } from "react-icons/io5";
-import { SiSimplelogin } from "react-icons/si";
-import { HiMenuAlt3, HiX } from "react-icons/hi";
-import { IoChatboxEllipses } from "react-icons/io5";
+ import { useState } from "react";
+import { motion, LayoutGroup } from "framer-motion";
+import { FiMenu, FiX } from "react-icons/fi";
+import { Link, useLocation } from "react-router-dom";
 
-const Header = () => {
+export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
+
+  const isActive = (path) => location.pathname === path;
 
   return (
-    <div
-      className={` fixed top-0 left-0 w-full bg-white shadow-md transition-all duration-300 z-50 ${
-        menuOpen ? "pb-4" : ""
-      }`}
-    >
-      <div className="flex flex-col md:flex-row gap-20 items-center px-4">
-        <div className="flex justify-between items-center w-full md:w-auto">
-          <Link to="/" className="flex items-center gap-2">
-            <img src="/enigma.png" alt="logo" className="h-16 md:h-20" />
-            <span className="text-xl md:text-2xl font-semibold text-gray-800">
-              Enigma Technical Club
-            </span>
-          </Link>
-          <button
-            className="md:hidden text-3xl"
-            onClick={() => setMenuOpen(!menuOpen)}
-          >
-            {menuOpen ? <HiX /> : <HiMenuAlt3 />}
-          </button>
+    <div className="flex flex-col bg-gray-200 w-full">
+      {/* Main Navbar Container */}
+      <div className="flex items-center w-full">
+        {/* Logo and Title */}
+        <Link to="/" className="flex items-center mr-4 md:mr-16">
+          <img 
+            className="w-12 h-12 md:w-[4rem] md:h-[4rem]" 
+            src="enigma.png" 
+            alt="Enigma Logo" 
+          /> 
+          <p className="text-black text-lg md:text-2xl font-bold ml-2 md:ml-4">
+            Enigma Technical Club
+          </p>
+        </Link>
+
+        {/* Desktop Navigation - Inline with logo/title */}
+        <div className="hidden md:block ml-24">
+          <LayoutGroup>
+            <nav className="font-medium flex flex-row items-center gap-12 bg-gray-300 rounded-full p-2">
+              {[
+                { to: "/", label: "Home" },
+                { to: "/members", label: "Members" },
+                { to: "/gallery", label: "Gallery" },
+                { to: "/events", label: "Events" },
+                { to: "/about", label: "AboutUS" },
+              ].map((item) => (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  className="relative px-4 py-2 cursor-pointer"
+                >
+                  {isActive(item.to) && (
+                    <motion.div
+                      layoutId="underline"
+                      className="absolute inset-0 bg-blue-500 rounded-full z-0"
+                      transition={{ type: "spring", stiffness: 150, damping: 15 }}
+                    />
+                  )}
+                  <span className={`relative z-10 ${isActive(item.to) ? "text-white" : "text-black"}`}>
+                    {item.label}
+                  </span>
+                </Link>
+              ))}
+            </nav>
+          </LayoutGroup>
         </div>
 
-        <ul
-          className={` font-[600] pl-10  box-border ${
-            menuOpen ? "flex" : "hidden"
-          } flex-col md:flex md:flex-row items-center gap-5 md:gap-8 text-lg md:text-base mt-3 md:mt-0`}
-        >
-          <li>
-            <NavLink to="/" className={({ isActive }) => `flex items-center p-1 border-3 rounded-xl border-transparent ${isActive ? "text-blue-700" : "hover:text-blue-800 hover:border-blue-800 hover:transition-all hover:duration-700"}`}>
-              <IoMdHome size="1.3rem" /> Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/events" className={({ isActive }) => `flex items-center p-1 border-3 rounded-xl border-transparent ${isActive ? "text-blue-700" : "hover:text-blue-800 hover:border-blue-800 hover:transition-all hover:duration-700"}`}>
-              <MdEventNote size="1.3rem" /> Events
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/gallery" className={({ isActive }) => `flex items-center p-1 border-3 rounded-xl border-transparent ${isActive ? "text-blue-700" : "hover:text-blue-800 hover:border-blue-800 hover:transition-all hover:duration-700"}`}>
-              <IoInformationCircle size="1.3rem" /> Gallery
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/members" className={({ isActive }) => `flex items-center p-1 gap-1 border-3 rounded-xl border-transparent ${isActive ? "text-blue-700" : "hover:text-blue-800 hover:border-blue-800 hover:transition-all hover:duration-700"}`}>
-              <FaPeopleGroup size="1.3rem" /> Members
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/about" className={({ isActive }) => `flex items-center p-1 border-3 rounded-xl border-transparent ${isActive ? "text-blue-700" : "hover:text-blue-800 hover:border-blue-800 hover:transition-all hover:duration-700"}`}>
-              <IoInformationCircle size="1.3rem" /> AboutUs
-            </NavLink>
-          </li>
-          {/* <li>
-            <NavLink to="/contact" className={({ isActive }) => `flex items-center p-1 border-3 rounded-xl border-transparent ${isActive ? "text-blue-700" : "hover:text-blue-800 hover:border-blue-800 hover:transition-all hover:duration-700"}`}>
-              <RiContactsBookFill size="1.3rem" /> ContactUs
-            </NavLink>
-          </li> */}
-        </ul>
-
-        {/* <div
-          className={`${
-            menuOpen ? "flex" : "hidden"
-          } md:flex flex-wrap justify-center items-center gap-5 mt-3 md:mt-0`}
-        >
-          <button className="flex items-center gap-2 cursor-pointer px-10 py-2 border-3 border-blue-600 text-blue-600 rounded-lg hover:bg-blue-600 hover:text-white">
-            <IoLogIn size="1.3rem" />
-            Login
+        {/* Mobile Menu Button */}
+        <div className="ml-auto md:hidden p-4">
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="text-black text-2xl"
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
           </button>
-          <button className="flex items-center gap-2 cursor-pointer px-10 py-2 border-3 bg-blue-600 text-white rounded-lg hover:border-blue-600 hover:text-blue-600 hover:bg-white">
-            <SiSimplelogin size="1.3rem" />
-            Sign Up
-          </button>
-        </div> */}
+        </div>
       </div>
 
+      {/* Mobile Menu - Appears below the main navbar */}
+      {menuOpen && (
+        <div className="md:hidden bg-gray-400 w-full">
+          <nav className="font-medium flex flex-col items-center gap-2 py-2">
+            {[
+              { to: "/", label: "Home" },
+              { to: "/members", label: "Members" },
+              { to: "/gallery", label: "Gallery" },
+              { to: "/events", label: "Events" },
+              { to: "/about", label: "AboutUS" },
+            ].map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                className="relative w-full text-center px-4 py-2 cursor-pointer"
+                onClick={() => setMenuOpen(false)}
+              >
+                <span className={`${isActive(item.to) ? "text-white" : "text-black"}`}>
+                  {item.label}
+                </span>
+              </Link>
+            ))}
+          </nav>
+        </div>
+      )}
     </div>
   );
-};
-
-export default Header;
+}

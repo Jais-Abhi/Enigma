@@ -2,8 +2,20 @@ import React from 'react';
 
 const About = () => {
   return (
-    <div className="bg-white flex justify-center mt-30 py-6">
-      <div className="flex flex-col items-center w-full max-w-[calc(100%-200px)] mx-[100px] gap-10">
+    <div className="bg-white flex justify-center py-6">
+      <div
+        className="
+          flex flex-col items-center 
+          w-full 
+          max-w-[calc(100%-40px)]  /* smaller horizontal margin on mobile */
+          sm:max-w-[calc(100%-100px)]  /* medium screens */
+          md:max-w-[calc(100%-200px)]  /* larger screens */
+          mx-5  /* small horizontal margin on mobile */
+          sm:mx-[50px] /* medium screen margin */
+          md:mx-[100px]  /* desktop margin */
+          gap-10
+        "
+      >
 
         {/* Image on Top */}
         <div className="w-full border-4 border-blue-100">
@@ -15,7 +27,7 @@ const About = () => {
         </div>
 
         {/* Text Content */}
-        <div className="text-center">
+        <div className="text-center px-2 sm:px-0">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">ABOUT US</h2>
 
           <h1 className="text-2xl md:text-3xl text-gray-900 mb-4">

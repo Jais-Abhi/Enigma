@@ -109,7 +109,7 @@ function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-100 py-10 px-4 mt-20">
+    <div className="min-h-screen bg-gray-100 py-10 px-4">
       <div className="max-w-6xl mx-auto bg-white shadow-xl rounded-xl">
         <h1 className="text-4xl font-bold text-center text-blue-800 py-8 border-b">
           All Committee Members
