@@ -51,7 +51,7 @@ const AdminEventList = () => {
 
       {events.map((event) => (
         <div key={event._id} className="border p-4 rounded-lg mb-4 shadow">
-          <h3 className="text-xl font-semibold">{event.title}</h3>
+          <h3 className="text-xl font-semibold">title:  {event.title}</h3>
           <p>
             <strong>Description:</strong> {event.description}
           </p>
