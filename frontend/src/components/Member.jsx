@@ -175,7 +175,7 @@ const CommitteeCard = ({
           <motion.div
             key={`${title}-leader-${idx}`}
             layoutId={`${title}-leader-${idx}`}
-            className="bg-transparent p-2 sm:p-4 rounded-xl text-center w-1/4 sm:w-1/4 md:w-1/6 lg:w-1/6 cursor-pointer"
+            className="bg-transparent sm:p-4 rounded-xl text-center w-1/4 sm:w-1/4 md:w-1/6 lg:w-1/6 cursor-pointer"
             onClick={(e) => onMemberClick(`${title}-leader-${idx}`, leader, e)}
             style={{
               pointerEvents:
