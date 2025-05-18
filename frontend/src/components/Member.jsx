@@ -649,13 +649,13 @@ export default function Members() {
             }}
           >
             <motion.div
-              layoutId={selectedMemberId}
+              // layoutId={selectedMemberId}
               onClick={(e) => e.stopPropagation()}
               className="w-full max-w-xs sm:max-w-md md:max-w-lg bg-white rounded-xl shadow-2xl p-4 sm:p-6 cursor-auto"
               initial={{ scale: 0.8 }}
               animate={{ scale: 1 }}
-              exit={{ scale: 0.8 }}
-              transition={{ duration: 0.2 }}
+              exit={false}
+              transition={{ duration: 0.3 }}
               ref={expandedCardRef}
             >
               {/* Pop-up content */}
