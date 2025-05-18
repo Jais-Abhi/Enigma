@@ -1,10 +1,19 @@
 import React, { useState } from "react";
 import { Link } from "react-router";
 import { useSelector } from "react-redux";
+import { Outlet } from "react-router";
 import Event from "./Event";
+import CreateEventForm from "./events/CreateEventForm";
+import AdminEventList from "./events/admin/AdminEventList";
+import useGetAllEvents from "../hooks/events/useGetAllEvents";
+
 const AdminDashboard = () => {
   const [IsEvent, setIsEvent] = useState(true);
   const user = useSelector((store) => store.user);
+  const name = user?.name.split(" ")[0] || "Admin";
+
+  const { refetchEvents } = useGetAllEvents();
+
   return (
     <div>
       <div className="mt-20 bg-gray-300">
@@ -27,11 +36,23 @@ const AdminDashboard = () => {
               Members
             </button>
           </div>
-          <p className="text-4xl text-center p-4">Hey, {user.name}</p>
+          <p className="text-4xl text-center p-4">Hey, {name}</p>
         </div>
       </div>
       {IsEvent ? (
-        <Event />
+        // <Event />
+        <div>
+          <Outlet />
+          <div className="mb-8 bg-white p-4 rounded-xl shadow">
+            <h2 className="text-2xl font-semibold mb-4">Create New Event</h2>
+            <CreateEventForm onSuccess={refetchEvents} />
+          </div>
+
+          {/* <div className="bg-white p-4 rounded-xl shadow">
+            <h2 className="text-2xl font-semibold mb-4">All Events</h2>
+            <AdminEventList />
+          </div> */}
+        </div>
       ) : (
         <>
           <div>Members</div>

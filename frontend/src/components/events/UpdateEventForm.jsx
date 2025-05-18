@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useGetEventById } from "../hooks/useGetEventById";
-import { useUpdateOrDeleteEvent } from "../hooks/useUpdateOrDeleteEvent";
-import { useParams } from "react-router-dom";
+import { useGetEventById } from "../../hooks/events/useGetEventById";
+import { useUpdateOrDeleteEvent } from "../../hooks/events/useUpdateOrDeleteEvent";
+import { useNavigate, useParams } from "react-router";
 
 const UpdateEventForm = () => {
-  const { id } = useParams(); 
+  const { id } = useParams();
   const { event, loading: loadingEvent } = useGetEventById(id);
   const { updateEvent, loading } = useUpdateOrDeleteEvent();
+  const navigate = useNavigate();
 
   const [form, setForm] = useState({
     title: "",
@@ -48,12 +49,14 @@ const UpdateEventForm = () => {
 
     const result = await updateEvent(id, formData);
     console.log("Update Result:", result);
+    navigate("/admin/dashboard");
   };
 
   if (loadingEvent) return <p>Loading event...</p>;
 
   return (
     <form onSubmit={handleUpdate}>
+      <h1 className="text-2xl font-bold">Update Form</h1>
       <input name="title" value={form.title} onChange={handleChange} required />
       <textarea
         name="description"

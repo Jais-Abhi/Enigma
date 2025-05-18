@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axiosInstance from "../axiosInstance";
+import axiosInstance from "./axiosInstance";
 
 export const useUpdateOrDeleteEvent = () => {
   const [loading, setLoading] = useState(false);
@@ -18,17 +18,16 @@ export const useUpdateOrDeleteEvent = () => {
     }
   };
 
-  const deleteEvent = async (id) => {
+  const deleteEvent = async (eventId) => {
     try {
-      setLoading(true);
-      const res = await axiosInstance.delete(`/${id}`);
+      const res = await axiosInstance.delete(`/${eventId}`);
       return res.data;
     } catch (err) {
-      throw err.response?.data?.message || "Failed to delete event";
-    } finally {
-      setLoading(false);
+      console.error("Delete event failed:", err);
+      throw err;
     }
   };
 
   return { updateEvent, deleteEvent, loading };
 };
+
