@@ -91,17 +91,17 @@ const MainSlider = () => {
   }, [index]);
 
   // On hover handlers
-  // const handleMouseEnter = () => setIsHovered(true);
-  // const handleMouseLeave = () => {
-  //   setIsHovered(false);
-  //   lastTimestampRef.current = null; // reset timestamp so delta calculation restarts cleanly
-  // };
+  const handleMouseEnter = () => setIsHovered(true);
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    lastTimestampRef.current = null; // reset timestamp so delta calculation restarts cleanly
+  };
 
   return (
     <div
       className="relative w-full overflow-hidden"
-      // onMouseEnter={handleMouseEnter}
-      // onMouseLeave={handleMouseLeave}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       {/* Progress Bar */}
       <div className="absolute opacity-70 top-0 left-0 w-full h-1 z-30 pointer-events-none">
