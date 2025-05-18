@@ -6,6 +6,7 @@ import Event from "./Event";
 import CreateEventForm from "./events/CreateEventForm";
 import AdminEventList from "./events/admin/AdminEventList";
 import useGetAllEvents from "../hooks/events/useGetAllEvents";
+import useLogout from "../hooks/useLogout";
 
 const AdminDashboard = () => {
   const [IsEvent, setIsEvent] = useState(true);
@@ -13,6 +14,10 @@ const AdminDashboard = () => {
   const name = user?.name.split(" ")[0] || "Admin";
 
   const { refetchEvents } = useGetAllEvents();
+  const logout = useLogout();
+  const handleLogout = () => {
+    logout();
+  };
 
   return (
     <div>
@@ -36,6 +41,12 @@ const AdminDashboard = () => {
               Members
             </button>
           </div>
+          <button
+            className="bg-red-300 p-4 rounded-2xl font-bold"
+            onClick={handleLogout}
+          >
+            LogOut
+          </button>
           <p className="text-4xl text-center p-4">Hey, {name}</p>
         </div>
       </div>
