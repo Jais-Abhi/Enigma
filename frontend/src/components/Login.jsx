@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux'; // ✔️ This is the correct source
 import { addUser } from "../slices/userSlice";
 import { BaseUrl } from "../utils/constant";
+import { motion } from "framer-motion";
 import axios from "axios";
 
 const Login = () => {
@@ -135,12 +136,14 @@ const Login = () => {
           placeholder="Password"
           className="p-2 m-2 border rounded"
         />
-        <button
+        <motion.button
           className="p-2 m-2 bg-green-600 text-white rounded text-2xl font-semibold cursor-pointer"
           onClick={() => handleButtonClick()}
+          whileHover={{scale:1.1}}
+          whileTap={{scale:0.8}}
         >
           {IsLoginInForm ? "Log In" : "Register"}
-        </button>
+        </motion.button>
         {errMessage && (
           <p className="text-red-600 m-2 font-bold">{errMessage}</p>
         )}

@@ -17,7 +17,7 @@ export default function Header() {
         <Link to="/" className="flex items-center mr-4 md:mr-16">
           <img 
             className="w-12 h-12 md:w-[4rem] md:h-[4rem]" 
-            src="/enigma.png" 
+            src="/enigma_logo.png" 
             alt="Enigma Logo" 
           /> 
           <p className="text-black text-lg md:text-2xl font-bold ml-2 md:ml-4">
@@ -34,7 +34,7 @@ export default function Header() {
                 { to: "/members", label: "Members" },
                 { to: "/gallery", label: "Gallery" },
                 { to: "/events", label: "Events" },
-                { to: "/about", label: "AboutUS" },
+                { to: "/about", label: "About Us" },
               ].map((item) => (
                 <Link
                   key={item.to}
@@ -78,7 +78,7 @@ export default function Header() {
               { to: "/members", label: "Members" },
               { to: "/gallery", label: "Gallery" },
               { to: "/events", label: "Events" },
-              { to: "/about", label: "AboutUS" },
+              { to: "/about", label: "About Us" },
             ].map((item) => (
               <Link
                 key={item.to}
