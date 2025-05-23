@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useCreateEvent } from "../../hooks/events/useCreateEvent";
 
-const CreateEventForm = () => {
+const CreateEventForm = ({ onSuccess }) => {
   const [form, setForm] = useState({
     title: "",
     description: "",
@@ -11,6 +11,7 @@ const CreateEventForm = () => {
     organizerName: "",
   });
   const [poster, setPoster] = useState(null);
+  const [result, setResult] = useState(null);
   const { createEvent, loading, error } = useCreateEvent();
 
   const handleChange = (e) => {
@@ -29,11 +30,12 @@ const CreateEventForm = () => {
     if (poster) formData.append("poster", poster);
 
     const result = await createEvent(formData);
-    console.log("Create Result:", result);
+    if (result) setResult(result);
+    onSuccess();
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="border-black">
       <input
         name="title"
         onChange={handleChange}
@@ -75,6 +77,9 @@ const CreateEventForm = () => {
         {loading ? "Creating..." : "Create Event"}
       </button>
       {error && <p style={{ color: "red" }}>{error}</p>}
+      {result?.success ? (
+        <p style={{ color: "green" }}>{result?.message}</p>
+      ) : null}
     </form>
   );
 };

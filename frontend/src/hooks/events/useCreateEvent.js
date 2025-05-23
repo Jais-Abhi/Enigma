@@ -9,16 +9,21 @@ export const useCreateEvent = () => {
     try {
       setLoading(true);
       setError(null);
+
       const response = await axiosInstance.post("/", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
+
       return response.data;
     } catch (err) {
+      console.error("Create event error:", err.response || err.message);
       setError(err.response?.data?.message || "Error creating event");
     } finally {
       setLoading(false);
     }
   };
+
+  
 
   return { createEvent, loading, error };
 };
