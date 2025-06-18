@@ -67,6 +67,10 @@
 // src/MainEvent.jsx
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+// import useGetAllEvents from '../../hooks/events/useGetAllEvents';
+
+// const { events, loading } = useGetAllEvents();
+
 
 const events = [
   {
@@ -86,7 +90,7 @@ const events = [
 const MainEvent = () => {
   return (
     <div>
-      <p className='flex flex-col text-center text-3xl font-semibold' >Upcoming Events</p>
+      <p className='flex flex-col text-center text-3xl font-semibold'>Upcoming Events</p>
       <div className=" h-[30rem] flex flex-wrap items-center justify-center p-8 gap-6">
       {events.map((event, index) => (
         <EventCard
@@ -95,6 +99,21 @@ const MainEvent = () => {
           description={event.description}
         />
       ))}
+
+{/* 
+      {loading ? (
+        <p className="text-xl text-center">Loading events...</p>
+          ) : (
+          events.map((event) => (
+        <EventCard
+      key={event._id}
+      name={event.title}
+      description={event.description}
+    />
+  ))
+)} */}
+
+
     </div>
     </div>
   );
