@@ -264,6 +264,25 @@ export default function Members() {
         }
         ]
     },
+     {
+      
+      members: [
+        {
+          name: "Raghujeet Singh",
+          role: "Club Founder",
+          image: "atebar.jpg",
+          description: "Passionate about network security and ethical hacking.",
+          social: {
+            linkedin: "https://linkedin.com/in/ankushkumar",
+            twitter: "https://twitter.com/ankushk",
+            instagram: "https://instagram.com/ankushk",
+            email: "ankush.kumar@example.com",
+            github: "https://github.com/ankushkumar",
+          }
+        }
+        ]
+    },
+    
     {
       title : " Student Coordinator",
       members: [
@@ -293,7 +312,7 @@ export default function Members() {
         },
         {
           name : "VISHAL KUMAR",
-          image :"Sparsh.jpg",
+          image :"Vishal.jpg",
           description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi, ipsa.",
           social: {
             linkedin: "https://linkedin.com/in/ankushkumar",
@@ -380,7 +399,7 @@ export default function Members() {
       head: {
         name: "Rajkumar Gupta",
         role: "Head",
-        image: "",
+        image: "Rajgupta.jpg",
         description: "Passionate about network security and ethical hacking.",
         social: {
           linkedin: "https://linkedin.com/in/ayushishukla",
