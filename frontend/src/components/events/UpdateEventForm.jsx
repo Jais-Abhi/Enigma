@@ -52,43 +52,106 @@ const UpdateEventForm = () => {
     navigate("/admin/dashboard");
   };
 
-  if (loadingEvent) return <p>Loading event...</p>;
+  if (loadingEvent) return <p className="text-center mt-10 text-lg">Loading event...</p>;
 
   return (
-    <form onSubmit={handleUpdate}>
-      <h1 className="text-2xl font-bold">Update Form</h1>
-      <input name="title" value={form.title} onChange={handleChange} required />
-      <textarea
-        name="description"
-        value={form.description}
-        onChange={handleChange}
-        required
-      />
-      <input
-        name="community"
-        value={form.community}
-        onChange={handleChange}
-        required
-      />
-      <input name="venue" value={form.venue} onChange={handleChange} required />
-      <input
-        name="eventDateTime"
-        type="datetime-local"
-        value={form.eventDateTime?.slice(0, 16)}
-        onChange={handleChange}
-        required
-      />
-      <input
-        name="organizerName"
-        value={form.organizerName}
-        onChange={handleChange}
-        required
-      />
-      <input type="file" accept="image/*" onChange={handleImageChange} />
-      <button type="submit" disabled={loading}>
-        {loading ? "Updating..." : "Update Event"}
-      </button>
-    </form>
+    <div className="max-w-7xl mx-auto mt-10 p-6 border border-black shadow-lg shadow-black rounded-lg">
+      <h1 className="text-3xl font-bold mb-6 text-center text-black">Update Event</h1>
+      <form onSubmit={handleUpdate} className="flex flex-wrap gap-6">
+        <div className="w-full md:w-[32%]">
+          <label className="block font-medium text-gray-800">Title</label>
+          <input
+            name="title"
+            value={form.title}
+            onChange={handleChange}
+            required
+            className="w-full border border-gray-400 rounded px-3 py-2 mt-1"
+            placeholder="Enter title"
+          />
+        </div>
+
+        <div className="w-full md:w-[32%]">
+          <label className="block font-medium text-gray-800">Community</label>
+          <input
+            name="community"
+            value={form.community}
+            onChange={handleChange}
+            required
+            className="w-full border border-gray-400 rounded px-3 py-2 mt-1"
+            placeholder="Enter community"
+          />
+        </div>
+
+        <div className="w-full md:w-[32%]">
+          <label className="block font-medium text-gray-800">Venue</label>
+          <input
+            name="venue"
+            value={form.venue}
+            onChange={handleChange}
+            required
+            className="w-full border border-gray-400 rounded px-3 py-2 mt-1"
+            placeholder="Enter venue"
+          />
+        </div>
+
+        <div className="w-full md:w-[32%]">
+          <label className="block font-medium text-gray-800">Date & Time</label>
+          <input
+            name="eventDateTime"
+            type="datetime-local"
+            value={form.eventDateTime?.slice(0, 16)}
+            onChange={handleChange}
+            required
+            className="w-full border border-gray-400 rounded px-3 py-2 mt-1"
+          />
+        </div>
+
+        <div className="w-full md:w-[32%]">
+          <label className="block font-medium text-gray-800">Organizer</label>
+          <input
+            name="organizerName"
+            value={form.organizerName}
+            onChange={handleChange}
+            required
+            className="w-full border border-gray-400 rounded px-3 py-2 mt-1"
+            placeholder="Organizer name"
+          />
+        </div>
+
+        <div className="w-full md:w-[32%]">
+          <label className="block font-medium text-gray-800">Poster Image</label>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleImageChange}
+            className="w-full mt-1"
+          />
+        </div>
+
+        <div className="w-full">
+          <label className="block font-medium text-gray-800">Description</label>
+          <textarea
+            name="description"
+            value={form.description}
+            onChange={handleChange}
+            required
+            rows={4}
+            className="w-full border border-gray-400 rounded px-3 py-2 mt-1"
+            placeholder="Enter description"
+          />
+        </div>
+
+        <div className="w-full mt-4">
+          <button
+            type="submit"
+            disabled={loading}
+            className="bg-black text-white px-6 py-2 rounded hover:bg-gray-800 transition"
+          >
+            {loading ? "Updating..." : "Update Event"}
+          </button>
+        </div>
+      </form>
+    </div>
   );
 };
 

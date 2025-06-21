@@ -30,7 +30,7 @@ const AdminDashboard = () => {
               }}
               className="bg-green-300 p-4 rounded-4xl "
             >
-              Events
+             All Events
             </button>
             <button
               onClick={() => {
@@ -59,10 +59,10 @@ const AdminDashboard = () => {
             <CreateEventForm onSuccess={refetchEvents} />
           </div>
 
-          {/* <div className="bg-white p-4 rounded-xl shadow">
+           {/*<div className="bg-white p-4 rounded-xl shadow">
             <h2 className="text-2xl font-semibold mb-4">All Events</h2>
             <AdminEventList />
-          </div> */}
+          </div>*/}
         </div>
       ) : (
         <>

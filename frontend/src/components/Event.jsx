@@ -5,7 +5,7 @@ import AdminEventList from "./events/admin/AdminEventList";
 const Event = () => {
   return (
     <div className="flex justify-center text-2xl p-8 box-border ">
-      {/* <form className='flex justify-between flex-col gap-4' >
+      {/*<form className='flex justify-between flex-col gap-4' >
           <p>Title : <input placeholder='Enter Title' className='border-2 border-black' plac type="text" name="" id="" /> </p>
           <p className='flex justify-between items-center' > Description : <textarea className='border-2 border-black' name="" id=""></textarea></p>
           <p>
@@ -18,8 +18,8 @@ const Event = () => {
                 <option value="">Social Media</option>
             </select></p>
         </form> */}
-      <AdminEventList />
       <CreateEventForm />
+      <AdminEventList />
     </div>
   );
 };

@@ -12,9 +12,7 @@ const AdminEventList = () => {
   const [errorMsg, setErrorMsg] = useState("");
 
   const handleDelete = async (id) => {
-    const confirm = window.confirm(
-      "Are you sure you want to delete this event?"
-    );
+    const confirm = window.confirm("Are you sure you want to delete this event?");
     if (!confirm) return;
 
     try {
@@ -49,50 +47,43 @@ const AdminEventList = () => {
         </p>
       )}
 
-      {events.map((event) => (
-        <div key={event._id} className="border p-4 rounded-lg mb-4 shadow">
-          <h3 className="text-xl font-semibold">title:  {event.title}</h3>
-          <p>
-            <strong>Description:</strong> {event.description}
-          </p>
-          <p>
-            <strong>Community:</strong> {event.community}
-          </p>
-          <p>
-            <strong>Venue:</strong> {event.venue}
-          </p>
-          <p>
-            <strong>Date & Time:</strong>{" "}
-            {new Date(event.eventDateTime).toLocaleString()}
-          </p>
-          <p>
-            <strong>Organizer:</strong> {event.organizerName}
-          </p>
-          <p>
-            <strong>Created By:</strong> {event.createdBy?.name || "Unknown"}
-          </p>
-          <img
-            src={event.poster}
-            alt="Event poster"
-            className="w-48 h-auto mt-2 rounded"
-          />
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        {events.map((event) => (
+          <div
+            key={event._id}
+            className="border p-4 rounded-lg shadow hover:shadow-lg transition duration-300 flex flex-col"
+          >
+            <img
+              src={event.poster}
+              alt="Event poster"
+              className="w-full h-40 object-cover rounded mb-3"
+            />
 
-          <div className="mt-4 flex gap-4">
-            <button
-              onClick={() => handleEdit(event._id)}
-              className="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700"
-            >
-              Edit
-            </button>
-            <button
-              onClick={() => handleDelete(event._id)}
-              className="bg-red-600 text-white px-4 py-1 rounded hover:bg-red-700"
-            >
-              Delete
-            </button>
+            <h3 className="text-lg font-semibold mb-1">Title: {event.title}</h3>
+            <p><strong>Description:</strong> {event.description}</p>
+            <p><strong>Community:</strong> {event.community}</p>
+            <p><strong>Venue:</strong> {event.venue}</p>
+            <p><strong>Date & Time:</strong> {new Date(event.eventDateTime).toLocaleString()}</p>
+            <p><strong>Organizer:</strong> {event.organizerName}</p>
+            <p><strong>Created By:</strong> {event.createdBy?.name || "Unknown"}</p>
+
+            <div className="mt-auto flex gap-4 pt-4">
+              <button
+                onClick={() => handleEdit(event._id)}
+                className="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700"
+              >
+                Edit
+              </button>
+              <button
+                onClick={() => handleDelete(event._id)}
+                className="bg-red-600 text-white px-4 py-1 rounded hover:bg-red-700"
+              >
+                Delete
+              </button>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };
