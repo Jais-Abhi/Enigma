@@ -7,7 +7,7 @@ const MainEvent = () => {
   if (loading)
     return (
       <div className="flex justify-center items-center h-screen">
-        <p className="text-lg text-blue-600 animate-pulse">Loading trending events...</p>
+        <p className="text-lg text-blue-600 animate-pulse">Loading New events...</p>
       </div>
     );
 
