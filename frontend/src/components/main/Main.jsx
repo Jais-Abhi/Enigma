@@ -10,7 +10,7 @@ export default function Main(){
       <MainSlider />
       <MainAbout />
       <MainEvent />
-      {/* <MainMembers /> */}
+      <MainMembers />
       <MainGallery/>
     </>
   )

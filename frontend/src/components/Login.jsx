@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Header from "./Header";
 import { validateData } from "../utils/validate";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from 'react-redux'; // ✔️ This is the correct source
+import { useDispatch } from 'react-redux';
 import { addUser } from "../slices/userSlice";
 import { BaseUrl } from "../utils/constant";
 import { motion } from "framer-motion";
@@ -25,67 +25,48 @@ const Login = () => {
   };
 
   const handleInputData = (e) => {
-    if (IsLoginInForm) {
-      if (e.target.id === "email") setEmail(e.target.value);
-      if (e.target.id === "password") setPassword(e.target.value);
-    } else {
-      if (e.target.id === "name") setName(e.target.value);
-      if (e.target.id === "email") setEmail(e.target.value);
-      if (e.target.id === "password") setPassword(e.target.value);
-    }
+    const { id, value } = e.target;
+    if (id === "name") setName(value);
+    if (id === "email") setEmail(value);
+    if (id === "password") setPassword(value);
   };
 
   const handleButtonClick = async () => {
-    if (IsLoginInForm) {
-      const loginPayload = {
-        email: email,
-        password: password,
-      };
-      const isValid = validateData({ email, password });
-      if (isValid) {
-        // Call the login API
-        const response = await axios.post(
-          `${BaseUrl}auth/login`,
-          loginPayload,
-          {
-            withCredentials: true,
-          }
-        );
-        if (response.data.success) {
+    const isValid = validateData({ email, password });
+    if (!isValid) {
+      setErrMessage("Something went wrong");
+      return;
+    }
+
+    try {
+      if (IsLoginInForm) {
+        const loginPayload = { email, password };
+        const response = await axios.post(`${BaseUrl}auth/login`, loginPayload, {
+          withCredentials: true,
+        });
+
+        if (response.data.success && response.data.user) {
           setErrMessage(null);
           setEmail("");
           setPassword("");
           setMessage(response.data.message);
-          // dispatch(addUserToStore(response.data.user))
-          dispatch(addUser(response.data.user))
+          dispatch(addUser(response.data.user));
+
+          const user = response.data.user;
+          if (user.role === "admin") {
+            navigate("/admin/dashboard");
+          } else {
+            navigate("/");
+          }
         } else {
           setErrMessage(response.data.message);
         }
-        const user = response.data.user;
-        if (user.role === "admin") {
-          navigate("/admin/dashboard");
-        } else {
-          navigate("/");
-        }
       } else {
-        setErrMessage("Something went wrong");
-      }
-    } else {
-      //Register logic
-      const isValid = validateData({ email, password });
-      const registerPayload = {
-        name: name,
-        email: email,
-        password: password,
-      };
-      if (isValid) {
-        const response = await axios.post(
-          `${BaseUrl}auth/register`,
-          registerPayload,
-          {
-            withCredentials: true,
-          }
-        );
+        const registerPayload = { name, email, password };
+        const response = await axios.post(`${BaseUrl}auth/register`, registerPayload, {
+          withCredentials: true,
+        });
+
         if (response.data.success) {
           setErrMessage(null);
           setName("");
@@ -95,16 +76,18 @@ const Login = () => {
         } else {
           setErrMessage(response.data.message);
         }
-      } else {
-        setErrMessage("Invalid registration data");
       }
+    } catch (error) {
+      console.error("Login/Register error:", error);
+      setErrMessage("Server error. Please try again.");
     }
   };
+
   return (
     <>
       <Header />
       <form
-        className="flex flex-col absolute bg-white  text-black border-2 bg-opacity-50 p-10 rounded-lg w-[80%] md:w-[30%] mx-auto my-32 right-0 left-0 top-15"
+        className="flex flex-col absolute bg-white text-black border-2 bg-opacity-50 p-10 rounded-lg w-[80%] md:w-[30%] mx-auto my-32 right-0 left-0 top-15"
         onSubmit={(e) => e.preventDefault()}
       >
         <h1 className="font-bold text-3xl m-2">
@@ -113,7 +96,7 @@ const Login = () => {
         {!IsLoginInForm && (
           <input
             id="name"
-            onChange={(e) => handleInputData(e)}
+            onChange={handleInputData}
             required
             type="text"
             placeholder="Name"
@@ -122,7 +105,7 @@ const Login = () => {
         )}
         <input
           id="email"
-          onChange={(e) => handleInputData(e)}
+          onChange={handleInputData}
           required
           type="email"
           placeholder="Email address"
@@ -131,38 +114,30 @@ const Login = () => {
         <input
           required
           id="password"
-          onChange={(e) => handleInputData(e)}
+          onChange={handleInputData}
           type="password"
           placeholder="Password"
           className="p-2 m-2 border rounded"
         />
         <motion.button
           className="p-2 m-2 bg-green-600 text-white rounded text-2xl font-semibold cursor-pointer"
-          onClick={() => handleButtonClick()}
-          whileHover={{scale:1.1}}
-          whileTap={{scale:0.8}}
+          onClick={handleButtonClick}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.8 }}
         >
           {IsLoginInForm ? "Log In" : "Register"}
         </motion.button>
-        {errMessage && (
-          <p className="text-red-600 m-2 font-bold">{errMessage}</p>
-        )}
+        {errMessage && <p className="text-red-600 m-2 font-bold">{errMessage}</p>}
         {message && <p className="text-green-600 m-2 font-bold">{message}</p>}
         <div className="m-2 cursor-pointer">
-          <p onClick={() => handleSignInForm()}>
+          <p onClick={handleSignInForm}>
             {IsLoginInForm ? (
-              <>
-                Don't have account{" "}
-                <span className="text-blue-600">Register</span>
-              </>
+              <>Don't have an account? <span className="text-blue-600">Register</span></>
             ) : (
-              <>
-                Already have an account?{" "}
-                <span className="text-blue-600">Log In</span>
-              </>
+              <>Already have an account? <span className="text-blue-600">Log In</span></>
             )}
           </p>
-        </div> 
+        </div>
       </form>
     </>
   );

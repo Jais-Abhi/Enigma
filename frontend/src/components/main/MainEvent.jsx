@@ -19,33 +19,31 @@ const MainEvent = () => {
     );
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-100 to-blue-50 py-10 px-4 md:px-12">
-      <h2 className="text-4xl font-extrabold text-center mb-15 text-blue-800 drop-shadow-md">
-        Upcomming Events
+    <div className="min-h-screen bg-gradient-to-b from-gray-100 to-blue-50 py-10 px-4 sm:px-10 md:px-20 lg:px-[200px]">
+      <h2 className="text-3xl sm:text-4xl font-extrabold text-center mb-12 text-blue-800 drop-shadow-md">
+        Upcoming Events
       </h2>
 
       {events.length === 0 && (
-        <p className="text-center text-gray-600">No Upcomming events available.</p>
+        <p className="text-center text-gray-600">No Upcoming events available.</p>
       )}
 
-      <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-10 sm:gap-12 md:gap-20 grid-cols-1 md:grid-cols-2">
         {events.map((event) => (
           <div
             key={event._id}
-            className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group"
+            className="bg-white rounded-2xl overflow-hidden border-2 border-transparent
+                       transition-all duration-300 group hover:border-blue-600 
+                       hover:shadow-[0_0_10px_2px_rgba(37,99,235,0.5)] hover:scale-[1.02]"
           >
             <img
               src={event.poster}
               alt={event.title}
-              className="w-full h-55 object-cover group-hover:scale-105 transition-transform duration-300"
+              className="w-full object-contain"
             />
-            <div className="p-6">
-              
-                {event.title}
-              
-              <p className="text-sm text-gray-600 mt-2 line-clamp-3">
-                {event.description}
-              </p>
+            <div className="p-4 sm:p-6">
+              <h3 className="text-lg sm:text-xl font-bold text-blue-800">{event.title}</h3>
+              <p className="text-sm text-gray-600 mt-2">{event.description}</p>
               <div className="mt-4 space-y-1 text-sm text-gray-700">
                 <p><strong>📍 Venue:</strong> {event.venue}</p>
                 <p>

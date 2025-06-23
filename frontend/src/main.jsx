@@ -34,6 +34,7 @@ const router = createBrowserRouter([
       { path: "gallery", element: <Gallery /> },
       { path: "members", element: <MemberSlider /> },
       { path: "about", element: <About /> },
+
       {
         path: "admin/dashboard",
         element: (

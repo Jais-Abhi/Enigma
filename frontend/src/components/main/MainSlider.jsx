@@ -12,14 +12,11 @@ const MainSlider = () => {
   const progressBarRef = useRef(null);
   const animationFrameRef = useRef(null);
 
-  // For smooth transition control
   const sliderRef = useRef(null);
 
-  // Track elapsed time for progress bar
   const elapsedTimeRef = useRef(0);
   const lastTimestampRef = useRef(null);
 
-  // Animate progress bar with pause on hover
   const animate = (timestamp) => {
     if (!lastTimestampRef.current) lastTimestampRef.current = timestamp;
 
@@ -49,14 +46,12 @@ const MainSlider = () => {
     };
   }, [isHovered]);
 
-  // Move to next slide with infinite forward effect
   const goNext = () => {
-    if (index === slides.length) return; // prevent extra increments
+    if (index === slides.length) return; 
 
     setIndex((prev) => prev + 1);
   };
 
-  // Move to previous slide (simple wrap around)
   const prevSlide = () => {
     if (index === 0) {
       setIndex(slides.length - 1);
@@ -67,34 +62,28 @@ const MainSlider = () => {
     elapsedTimeRef.current = 0;
   };
 
-  // When index updates and hits the cloned slide (slides.length), reset instantly
   useEffect(() => {
     if (index === slides.length) {
-      // After the slide transition animation duration, reset to 0 without animation
       const timer = setTimeout(() => {
         if (sliderRef.current) {
           sliderRef.current.style.transition = "none";
           setIndex(0);
-          // Reset transform instantly
+          
           sliderRef.current.style.transform = `translateX(0%)`;
 
-          // Force reflow to apply styles immediately
           sliderRef.current.offsetHeight;
 
-          // Re-enable transition for next moves
           sliderRef.current.style.transition = "transform 0.8s ease-in-out";
         }
-      }, 800); // Match transition duration
+      }, 800);
 
       return () => clearTimeout(timer);
     }
   }, [index]);
-
-  // On hover handlers
   const handleMouseEnter = () => setIsHovered(true);
   const handleMouseLeave = () => {
     setIsHovered(false);
-    lastTimestampRef.current = null; // reset timestamp so delta calculation restarts cleanly
+    lastTimestampRef.current = null; 
   };
 
   return (
@@ -103,7 +92,6 @@ const MainSlider = () => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Progress Bar */}
       <div className="absolute opacity-70 top-0 left-0 w-full h-1 z-30 pointer-events-none">
         <div
           ref={progressBarRef}
@@ -111,8 +99,6 @@ const MainSlider = () => {
           style={{ width: "0%" }}
         />
       </div>
-
-      {/* Slide Text */}
       <div className="absolute bottom-0 p-4 w-full z-20 px-4">
         <h2 className="text-white text-3xl md:text-5xl font-bold drop-shadow-lg">
           {index === slides.length ? slides[0].title : slides[index].title}
@@ -122,7 +108,6 @@ const MainSlider = () => {
         </p>
       </div>
 
-      {/* Image Slider with cloned first slide at the end */}
       <div
         ref={sliderRef}
         className="flex transition-transform duration-800 ease-in-out"
@@ -136,7 +121,6 @@ const MainSlider = () => {
             className="min-w-full object-cover h-[300px] md:h-[600px] lg:h-[600px]"
           />
         ))}
-        {/* Cloned first slide */}
         <img
           key="clone"
           src={slides[0].image}
@@ -144,8 +128,6 @@ const MainSlider = () => {
           className="min-w-full object-cover h-[300px] md:h-[600px] lg:h-[600px]"
         />
       </div>
-
-      {/* Navigation Buttons */}
       <button
         onClick={prevSlide}
         className="absolute h-full top-1/2 left-0 transform -translate-y-1/2 bg-black/10 text-white p-2 rounded-full hover:bg-black/30 z-40"

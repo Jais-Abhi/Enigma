@@ -38,5 +38,4 @@ app.use(express.json());
 
 app.use("/api/auth", authRouter);
 app.use("/api/event", eventRouter);
-
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
