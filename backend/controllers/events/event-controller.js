@@ -53,7 +53,9 @@ const createEvent = async (req, res) => {
 // Get all events
 const getAllEvents = async (req, res) => {
   try {
-    const events = await Event.find().populate("createdBy", "name email");
+    const events = await Event.find()
+      .populate("createdBy", "name email")
+      .sort({ createdAt: -1, eventDateTime: 1 });
     res.status(200).json({ success: true, events });
   } catch (err) {
     res.status(500).json({
