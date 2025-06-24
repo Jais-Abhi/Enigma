@@ -20,6 +20,8 @@ const Event = () => {
         </form> */}
       <CreateEventForm />
       <AdminEventList />
+     
+      
     </div>
   );
 };
