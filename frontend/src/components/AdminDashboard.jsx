@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import CreateEventForm from "./events/CreateEventForm";
 import CreateSlider from "./sliders/CreateSlider";
 import useGetAllEvents from "../hooks/events/useGetAllEvents";
+import useGetAllSlider from "../hooks/sliders/useGetAllSliders";
 import useLogout from "../hooks/useLogout";
 
 const AdminDashboard = () => {
@@ -13,6 +14,7 @@ const AdminDashboard = () => {
   const name = user?.name?.split(" ")[0] || "Admin";
 
   const { refetchEvents } = useGetAllEvents();
+  const { refetchSliders } = useGetAllSlider(); // ✅ FIXED: now refetchSliders is defined
   const logout = useLogout();
 
   const handleLogout = () => {
@@ -51,7 +53,7 @@ const AdminDashboard = () => {
       {/* Main Section */}
       {IsEvent ? (
         <div className="p-6 space-y-6">
-          {/* Show nested routes (if any) */}
+          {/* Nested Routes */}
           <Outlet />
 
           {/* Create New Event */}
@@ -63,16 +65,8 @@ const AdminDashboard = () => {
           {/* Create New Slider */}
           <div className="bg-white p-4 rounded-xl shadow">
             <h2 className="text-2xl font-semibold mb-4">Create New Slider</h2>
-            <CreateSlider/>
+            <CreateSlider onSuccess={refetchSliders} /> {/* ✅ FIXED: use correct refetch */}
           </div>
-
-          {/* Uncomment this if you want to show all events list */}
-          {/*
-          <div className="bg-white p-4 rounded-xl shadow">
-            <h2 className="text-2xl font-semibold mb-4">All Events</h2>
-            <AdminEventList />
-          </div>
-          */}
         </div>
       ) : (
         <div className="p-6">

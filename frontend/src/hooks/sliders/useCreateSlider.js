@@ -1,27 +1,29 @@
 // src/hooks/sliders/useCreateSlider.js
-
 import { useState } from "react";
-import axiosInstance from "./axiosInstance"; // ✅ path ध्यान से
+import axios from "axios";
 
 export const useCreateSlider = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const createSlider = async (formData) => {
-    try {
-      setLoading(true);
-      setError(null);
+    setLoading(true);
+    setError(null);
 
-      const response = await axiosInstance.post("/slider", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/sliders", // ✅ correct endpoint
+        formData,
+        {
+          withCredentials: true,
+        }
+      );
 
       return response.data;
     } catch (err) {
-      console.error("Create slider error:", err.response?.data || err.message);
-      setError(err.response?.data?.message || "Error creating slider");
+      console.error("Create slider error:", err.response?.data || err);
+      setError(err.response?.data?.message || "Failed to create slider");
+      return null;
     } finally {
       setLoading(false);
     }

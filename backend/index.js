@@ -40,5 +40,5 @@ app.use(express.json());
 
 app.use("/api/auth", authRouter);
 app.use("/api/event", eventRouter);
-app.use("/api/slider", sliderRouter);
+app.use("/api/sliders", sliderRouter);
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));

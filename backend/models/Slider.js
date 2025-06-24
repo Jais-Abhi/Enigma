@@ -16,5 +16,5 @@ const SliderSchema = new mongoose.Schema({
   
 });
 
-const Slider = mongoose.model("Sliders", SliderSchema);
+const Slider = mongoose.model("Slider", SliderSchema);
 export default Slider;
