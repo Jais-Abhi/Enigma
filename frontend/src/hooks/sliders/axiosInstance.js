@@ -1,8 +1,10 @@
+// src/hooks/sliders/axiosInstance.js
+
 import axios from "axios";
-import { BaseUrl } from "../../utils/constant";
+import { BaseUrl } from "../../utils/constant"; // ✅ FIXED
 
 const axiosInstance = axios.create({
-  baseURL: `${BaseUrl}slider/`,
+  baseURL: BaseUrl,
   withCredentials: true,
 });
 
