@@ -1,8 +1,6 @@
 import React from "react";
 import CreateEventForm from "./events/CreateEventForm";
 import AdminEventList from "./events/admin/AdminEventList";
-import CreateSlider from "./sliders/CreateSlider";
-
 const Event = () => {
   return (
     <div className="flex justify-center text-2xl p-8 box-border ">
@@ -21,9 +19,6 @@ const Event = () => {
         </form> */}
       <CreateEventForm />
       <AdminEventList />
-      <CreateSlider/>
-     
-      
     </div>
   );
 };
