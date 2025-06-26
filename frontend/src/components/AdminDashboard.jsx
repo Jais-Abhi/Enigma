@@ -6,11 +6,11 @@ import CreateEventForm from "./events/CreateEventForm";
 import CreateSlider from "./sliders/CreateSlider";
 import useGetAllEvents from "../hooks/events/useGetAllEvents";
 import useGetAllSlider from "../hooks/sliders/useGetAllSliders";
-import Slider from "./Slider"; // this should display all sliders
+import Slider from "./Slider";
 import useLogout from "../hooks/useLogout";
 
 const AdminDashboard = () => {
-  const [tab, setTab] = useState("events"); // "events" | "sliders" | "members"
+  const [tab, setTab] = useState("events");
   const user = useSelector((store) => store.user);
   const name = user?.name?.split(" ")[0] || "Admin";
 
@@ -29,7 +29,6 @@ const AdminDashboard = () => {
 
   return (
     <div>
-      {/* Top Bar */}
       <div className="mt-20 bg-gray-300">
         <div className="flex justify-between items-center px-6 py-4">
           <div className="text-2xl flex gap-5">
@@ -52,8 +51,6 @@ const AdminDashboard = () => {
           </button>
         </div>
       </div>
-
-      {/* Main Section */}
       <div className="p-6 space-y-6">
         {tab === "events" && (
           <>
@@ -81,7 +78,6 @@ const AdminDashboard = () => {
         {tab === "members" && (
           <div className="bg-white p-4 rounded-xl shadow">
             <h2 className="text-2xl font-semibold mb-4">Members</h2>
-            {/* Member list/form here */}
           </div>
         )}
       </div>

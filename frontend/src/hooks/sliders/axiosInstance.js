@@ -1,4 +1,4 @@
-// src/hooks/sliders/axiosInstance.js
+
 
 import axios from "axios";
 import { BaseUrl } from "../../utils/constant"; // ✅ FIXED

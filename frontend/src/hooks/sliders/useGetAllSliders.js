@@ -7,7 +7,7 @@ const useGetAllSliders = () => {
 
   const fetchSliders = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/sliders"); // ✅ Correct endpoint
+      const res = await axios.get("http://localhost:5000/api/sliders");
       setSliders(res.data);
     } catch (error) {
       console.error("Slider fetch error:", error);
