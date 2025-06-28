@@ -3,11 +3,13 @@ import { Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import CreateEventForm from "./events/CreateEventForm";
-import CreateSlider from "./sliders/CreateSlider";
 import useGetAllEvents from "../hooks/events/useGetAllEvents";
-import useGetAllSlider from "../hooks/sliders/useGetAllSliders";
+import { useGetAllSliders } from "../hooks/sliders/useGetAllSliders";
 import Slider from "./Slider";
 import useLogout from "../hooks/useLogout";
+import AdminMemberDashboard from "./members/admin/AdminMemberDashboard";
+import { useGetAllMembers } from "../hooks/members/useGetAllMembers";
+import SliderDashboard from "./sliders/admin/SliderDashboard";
 
 const AdminDashboard = () => {
   const [tab, setTab] = useState("events");
@@ -15,7 +17,9 @@ const AdminDashboard = () => {
   const name = user?.name?.split(" ")[0] || "Admin";
 
   const { refetchEvents } = useGetAllEvents();
-  const { refetchSliders } = useGetAllSlider();
+  const { refetchSliders } = useGetAllSliders();
+  const { refetchMembers } = useGetAllMembers();
+
   const logout = useLogout();
 
   const handleLogout = () => {
@@ -32,13 +36,22 @@ const AdminDashboard = () => {
       <div className="mt-20 bg-gray-300">
         <div className="flex justify-between items-center px-6 py-4">
           <div className="text-2xl flex gap-5">
-            <button onClick={() => setTab("events")} className={buttonClass("events")}>
+            <button
+              onClick={() => setTab("events")}
+              className={buttonClass("events")}
+            >
               All Events
             </button>
-            <button onClick={() => setTab("sliders")} className={buttonClass("sliders")}>
+            <button
+              onClick={() => setTab("sliders")}
+              className={buttonClass("sliders")}
+            >
               All Sliders
             </button>
-            <button onClick={() => setTab("members")} className={buttonClass("members")}>
+            <button
+              onClick={() => setTab("members")}
+              className={buttonClass("members")}
+            >
               Members
             </button>
           </div>
@@ -64,13 +77,13 @@ const AdminDashboard = () => {
 
         {tab === "sliders" && (
           <>
-            <div className="bg-white p-4 rounded-xl shadow">
+            {/* <div className="bg-white p-4 rounded-xl shadow">
               <h2 className="text-2xl font-semibold mb-4">All Sliders</h2>
               <Slider />
-            </div>
+            </div> */}
             <div className="bg-white p-4 rounded-xl shadow">
               <h2 className="text-2xl font-semibold mb-4">Create New Slider</h2>
-              <CreateSlider onSuccess={refetchSliders} />
+              <SliderDashboard onSuccess={refetchSliders} />
             </div>
           </>
         )}
@@ -78,6 +91,7 @@ const AdminDashboard = () => {
         {tab === "members" && (
           <div className="bg-white p-4 rounded-xl shadow">
             <h2 className="text-2xl font-semibold mb-4">Members</h2>
+            <AdminMemberDashboard onSuccess={refetchMembers} />
           </div>
         )}
       </div>

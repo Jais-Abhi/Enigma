@@ -1,26 +1,24 @@
-import { useState, useEffect } from "react";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import { BaseUrl } from "../../utils/constant";
 
-const useGetAllSliders = () => {
+export const useGetAllSliders = () => {
   const [sliders, setSliders] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchSliders = async () => {
-    try {
-      const res = await axios.get("http://localhost:5000/api/sliders");
-      setSliders(res.data);
-    } catch (error) {
-      console.error("Slider fetch error:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
+    const fetchSliders = async () => {
+      try {
+        const res = await axios.get(`${BaseUrl}slider/`);
+        setSliders(res.data.sliders);
+      } catch (error) {
+        console.error("Fetch sliders error:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
     fetchSliders();
   }, []);
 
   return { sliders, loading };
 };
-
-export default useGetAllSliders;

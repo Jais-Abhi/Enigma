@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import useGetAllSliders from "../../hooks/sliders/useGetAllSliders";
+import {useGetAllSliders} from "../../hooks/sliders/useGetAllSliders";
 
 const MainSlider = () => {
   const { sliders, loading } = useGetAllSliders();
@@ -112,7 +112,7 @@ const MainSlider = () => {
         {sliders.map((slide, idx) => (
           <img
             key={idx}
-            src={slide.poster || "/fallback.jpg"}
+            src={slide.image || "/fallback.jpg"}
             alt={`Slide ${idx}`}
             className="min-w-full object-cover h-[300px] md:h-[600px] lg:h-[600px]"
           />

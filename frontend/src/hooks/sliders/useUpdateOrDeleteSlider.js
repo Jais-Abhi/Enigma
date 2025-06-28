@@ -1,33 +1,31 @@
-import { useState } from "react";
-import axiosInstance from "./axiosInstance";
+import axios from "axios";
+import { BaseUrl } from "../../utils/constant";
 
 export const useUpdateOrDeleteSlider = () => {
-  const [loading, setLoading] = useState(false);
-
   const updateSlider = async (id, formData) => {
     try {
-      setLoading(true);
-      const res = await axiosInstance.put(`/${id}`, formData, {
+      const res = await axios.put(`${BaseUrl}slider/${id}`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
+        withCredentials: true,
       });
       return res.data;
-    } catch (err) {
-      throw err.response?.data?.message || "Failed to update slider";
-    } finally {
-      setLoading(false);
+    } catch (error) {
+      console.error("Update slider error:", error);
+      throw error;
     }
   };
 
-  const deleteSlider = async (sliderId) => {
+  const deleteSlider = async (id) => {
     try {
-      const res = await axiosInstance.delete(`/${sliderId}`);
+      const res = await axios.delete(`${BaseUrl}slider/${id}`, {
+        withCredentials: true,
+      });
       return res.data;
-    } catch (err) {
-      console.error("Delete event failed:", err);
-      throw err;
+    } catch (error) {
+      console.error("Delete slider error:", error);
+      throw error;
     }
   };
 
-  return { updateSlider, deleteSlider, loading };
+  return { updateSlider, deleteSlider };
 };
-
