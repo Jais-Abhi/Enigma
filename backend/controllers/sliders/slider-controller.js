@@ -1,14 +1,17 @@
+// controllers/slider/slider-controller.js
 import Slider from "../../models/Slider.js";
 import { imageUploadUtil } from "../../helpers/cloudinary.js";
 
+// Create Slider
 const createSlider = async (req, res) => {
   try {
     const { title, subtitle } = req.body;
     const fileBuffer = req.file?.buffer;
 
-    if (!fileBuffer) {
-      return res.status(400).json({ success: false, message: "Poster image is required" });
-    }
+    if (!fileBuffer)
+      return res
+        .status(400)
+        .json({ success: false, message: "Image is required" });
 
     const uploadResult = await imageUploadUtil(
       `data:${req.file.mimetype};base64,${fileBuffer.toString("base64")}`
@@ -17,79 +20,115 @@ const createSlider = async (req, res) => {
     const newSlider = new Slider({
       title,
       subtitle,
-      poster: uploadResult.secure_url,
+      image: uploadResult.secure_url,
       createdBy: req.user.id,
     });
 
     await newSlider.save();
-
-    res.status(201).json({
-      success: true,
-      message: "Slider created successfully",
-      slider: newSlider,
-    });
+    res
+      .status(201)
+      .json({
+        success: true,
+        message: "Slider created successfully",
+        slider: newSlider,
+      });
   } catch (err) {
-    console.error("Slider creation failed:", err.message);
-    res.status(500).json({ success: false, message: "Failed to create slider", error: err.message });
+    res
+      .status(500)
+      .json({
+        success: false,
+        message: "Failed to create slider",
+        error: err.message,
+      });
   }
 };
 
+// Get All Sliders
 const getAllSliders = async (req, res) => {
   try {
-    const sliders = await Slider.find();
-    res.status(200).json(sliders);
+    const sliders = await Slider.find().sort({ createdAt: -1 });
+    res.status(200).json({ success: true, sliders });
   } catch (err) {
-    res.status(500).json({ message: "Server error while fetching sliders" });
+    res
+      .status(500)
+      .json({
+        success: false,
+        message: "Failed to fetch sliders",
+        error: err.message,
+      });
   }
 };
 
-const getSliderById = async (req, res) => {
-  try {
-    const slider = await Slider.findById(req.params.id);
-    if (!slider) return res.status(404).json({ success: false, message: "Slider not found" });
-    res.status(200).json({ success: true, slider });
-  } catch (err) {
-    res.status(500).json({ success: false, message: "Failed to fetch slider", error: err.message });
-  }
-};
-
+// Update Slider
 const updateSlider = async (req, res) => {
   try {
     const slider = await Slider.findById(req.params.id);
-    if (!slider) return res.status(404).json({ success: false, message: "Slider not found" });
-    if (String(slider.createdBy) !== req.user.id) return res.status(403).json({ success: false, message: "Unauthorized" });
+    if (!slider)
+      return res
+        .status(404)
+        .json({ success: false, message: "Slider not found" });
 
-    let posterUrl = slider.poster;
+    let imageUrl = slider.image;
+
     if (req.file) {
+      const fileBuffer = req.file.buffer;
       const uploadResult = await imageUploadUtil(
-        `data:${req.file.mimetype};base64,${req.file.buffer.toString("base64")}`
+        `data:${req.file.mimetype};base64,${fileBuffer.toString("base64")}`
       );
-      posterUrl = uploadResult.secure_url;
+      imageUrl = uploadResult.secure_url;
     }
 
-    const updatedSlider = await Slider.findByIdAndUpdate(req.params.id, {
+    const updatedFields = {
       title: req.body.title,
       subtitle: req.body.subtitle,
-      poster: posterUrl,
-    }, { new: true });
+      image: imageUrl,
+    };
 
-    res.status(200).json({ success: true, message: "Slider updated", slider: updatedSlider });
+    const updatedSlider = await Slider.findByIdAndUpdate(
+      req.params.id,
+      updatedFields,
+      { new: true }
+    );
+    res
+      .status(200)
+      .json({
+        success: true,
+        message: "Slider updated successfully",
+        slider: updatedSlider,
+      });
   } catch (err) {
-    res.status(500).json({ success: false, message: "Failed to update slider", error: err.message });
+    res
+      .status(500)
+      .json({
+        success: false,
+        message: "Failed to update slider",
+        error: err.message,
+      });
   }
 };
 
+// Delete Slider
 const deleteSlider = async (req, res) => {
   try {
     const slider = await Slider.findById(req.params.id);
-    if (!slider) return res.status(404).json({ success: false, message: "Slider not found" });
-    if (String(slider.createdBy) !== req.user.id) return res.status(403).json({ success: false, message: "Unauthorized" });
+    if (!slider)
+      return res
+        .status(404)
+        .json({ success: false, message: "Slider not found" });
 
     await slider.deleteOne();
-    res.status(200).json({ success: true, message: "Slider deleted successfully" });
+    res
+      .status(200)
+      .json({ success: true, message: "Slider deleted successfully" });
   } catch (err) {
-    res.status(500).json({ success: false, message: "Failed to delete slider", error: err.message });
+    res
+      .status(500)
+      .json({
+        success: false,
+        message: "Failed to delete slider",
+        error: err.message,
+      });
   }
 };
 
-export { createSlider, getAllSliders, getSliderById, updateSlider, deleteSlider };
+export { createSlider, getAllSliders, updateSlider, deleteSlider };

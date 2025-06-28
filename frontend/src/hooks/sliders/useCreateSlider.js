@@ -1,32 +1,19 @@
-import { useState } from "react";
 import axios from "axios";
+import { BaseUrl } from "../../utils/constant";
 
 export const useCreateSlider = () => {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-
   const createSlider = async (formData) => {
-    setLoading(true);
-    setError(null);
-
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/sliders",
-        formData,
-        {
-          withCredentials: true,
-        }
-      );
-
-      return response.data;
-    } catch (err) {
-      console.error("Create slider error:", err.response?.data || err);
-      setError(err.response?.data?.message || "Failed to create slider");
-      return null;
-    } finally {
-      setLoading(false);
+      const res = await axios.post(`${BaseUrl}slider/`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+        withCredentials: true,
+      });
+      return res.data;
+    } catch (error) {
+      console.error("Create slider error:", error);
+      throw error;
     }
   };
 
-  return { createSlider, loading, error };
+  return { createSlider };
 };

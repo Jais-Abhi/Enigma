@@ -2,21 +2,17 @@ import express from "express";
 import {
   createSlider,
   getAllSliders,
-  getSliderById,
   updateSlider,
   deleteSlider,
 } from "../../controllers/sliders/slider-controller.js";
 import { authMiddleware } from "../../controllers/auth/auth-controller.js";
-import multer from "multer";
+import { upload } from "../../helpers/cloudinary.js";
 
 const router = express.Router();
-const storage = multer.memoryStorage();
-const upload = multer({ storage });
 
-router.post("/", authMiddleware, upload.single("poster"), createSlider);
+router.post("/", authMiddleware, upload.single("image"), createSlider);
 router.get("/", getAllSliders);
-router.get("/:id", getSliderById);
-router.put("/:id", authMiddleware, upload.single("poster"), updateSlider);
+router.put("/:id", authMiddleware, upload.single("image"), updateSlider);
 router.delete("/:id", authMiddleware, deleteSlider);
 
 export default router;
