@@ -5,4 +5,9 @@ import tailwind from "@tailwindcss/vite";
 export default defineConfig({
   base: "/",
   plugins: [react(), tailwind()],
+  build: {
+    rollupOptions: {
+      external: ["react-toastify"],
+    },
+  },
 });
