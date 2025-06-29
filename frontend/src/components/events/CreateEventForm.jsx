@@ -58,6 +58,7 @@ const CreateEventForm = ({ onSuccess }) => {
                 name={field.name}
                 onChange={handleChange}
                 placeholder={field.placeholder}
+                maxLength={150}
                 required
                 className="w-full px-4 py-2 border-2 border-gray-400 rounded-md h-24 resize-none focus:outline-none focus:ring-2 focus:ring-black-400"
               />

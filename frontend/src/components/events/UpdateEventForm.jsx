@@ -135,6 +135,7 @@ const UpdateEventForm = () => {
             value={form.description}
             onChange={handleChange}
             required
+            maxLength={150}
             rows={4}
             className="w-full border border-gray-400 rounded px-3 py-2 mt-1"
             placeholder="Enter description"
