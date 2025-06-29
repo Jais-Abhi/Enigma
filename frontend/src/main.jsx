@@ -18,8 +18,6 @@ import store from "./store/store.js";
 import { Provider } from "react-redux";
 import AdminEventList from "./components/events/admin/AdminEventList.jsx";
 import UpdateEventForm from "./components/events/UpdateEventForm.jsx";
-import { ToastContainer } from 'react-toastify';
-
 // const isAuthenticated = true;
 
 const router = createBrowserRouter([
@@ -66,6 +64,5 @@ createRoot(document.getElementById("root")).render(
     <Provider store={store}>
       <RouterProvider router={router} />
     </Provider>
-    <ToastContainer />
   </StrictMode>
 );
