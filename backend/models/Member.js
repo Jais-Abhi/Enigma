@@ -21,7 +21,7 @@ const MemberSchema = new mongoose.Schema(
     },
     position: {
       type: String,
-      enum: ["Member", "Incharge"],
+      enum: ["Member", "Head","CoHead"],
       default: "Member",
     },
     contactNo: { type: String, required: true },

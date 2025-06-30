@@ -23,7 +23,6 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://enigma-9a9i.onrender.com",
     ],
     methods: ["GET", "POST", "DELETE", "PUT", "PATCH"],
     allowedHeaders: [
