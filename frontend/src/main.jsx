@@ -22,8 +22,7 @@ import UpdateEventForm from "./components/events/UpdateEventForm.jsx";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 
-// >>>>>>> 5835ef4607be8854a0d94480b4af908543dd592c
-// const isAuthenticated = true;
+
 
 const router = createBrowserRouter([
   {
