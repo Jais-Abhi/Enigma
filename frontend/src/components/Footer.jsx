@@ -26,11 +26,11 @@ const Footer = () => {
         <div>
           <h2 className="text-xl font-semibold mb-3">Quick Links</h2>
           <ul className="space-y-2 text-gray-300 text-sm">
-            <li><a href="#" className="hover:text-white">Home</a></li>
-            <li><a href="#" className="hover:text-white">About Us</a></li>
-            <li><a href="#" className="hover:text-white">Events</a></li>
-            <li><a href="#" className="hover:text-white">Our Team</a></li>
-            <li><a href="#" className="hover:text-white">Contact</a></li>
+            <li><a href="/" className="hover:text-white">Home</a></li>
+            <li><a href="/about" className="hover:text-white">About Us</a></li>
+            <li><a href="/events" className="hover:text-white">Events</a></li>
+            <li><a href="/members" className="hover:text-white">Our Team</a></li>
+            <li><a href="/gallery" className="hover:text-white">Photo Gallery</a></li>
           </ul>
         </div>
 
@@ -42,6 +42,12 @@ const Footer = () => {
             <li>+91 000000000</li>
           </ul>
         </div>
+      </div>
+      <hr className="w-full bg-gray-500 mt-5"/>
+      <div>
+        <p className="text-center text-sm text-gray-400 mt-4">
+          &copy; {new Date().getFullYear()} Enigma Technical Club. All rights reserved. | Developed by Web Development Team
+        </p>
       </div>
     </footer>
   );
