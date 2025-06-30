@@ -18,6 +18,8 @@ import store from "./store/store.js";
 import { Provider } from "react-redux";
 import AdminEventList from "./components/events/admin/AdminEventList.jsx";
 import UpdateEventForm from "./components/events/UpdateEventForm.jsx";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const router = createBrowserRouter([
   {
