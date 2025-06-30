@@ -18,6 +18,12 @@ import store from "./store/store.js";
 import { Provider } from "react-redux";
 import AdminEventList from "./components/events/admin/AdminEventList.jsx";
 import UpdateEventForm from "./components/events/UpdateEventForm.jsx";
+<<<<<<< HEAD
+=======
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+
+>>>>>>> 5835ef4607be8854a0d94480b4af908543dd592c
 // const isAuthenticated = true;
 
 const router = createBrowserRouter([
