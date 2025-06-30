@@ -142,7 +142,7 @@ const AdminMemberDashboard = ({ onSuccess }) => {
 
         <select name="position" value={formData.position} onChange={handleChange} className="w-full p-2 border border-gray-400 rounded focus:outline-none focus:ring-2 focus:ring-orange-400">
           <option value="Head">Head</option>
-          <option value="CoHead">Co-Head</option>
+          <option value="CoHead">CoHead</option>
           <option value="Member">Member</option>
         </select>
 

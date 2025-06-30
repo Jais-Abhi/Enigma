@@ -4,6 +4,7 @@ import MainEvent from "./MainEvent";
 import MainGallery from "./MainGallery";
 import MainMembers from "./MainMembers";
 import MainSlider from "./MainSlider";
+import ContactButton from "../ContactButton";
 export default function Main(){
   return (
     <>
@@ -12,6 +13,8 @@ export default function Main(){
       <MainEvent />
       <MainMembers />
       <MainGallery/>
+      <ContactButton/>
+
     </>
   )
 }

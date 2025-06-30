@@ -9,7 +9,7 @@ const LeaderCard = () => {
       <div className="flex flex-col md:flex-row items-center justify-between p-6 md:p-12 rounded-2xl shadow-md w-full bg-white">
         <div className="text-center md:text-left md:w-2/3 space-y-6">
           <h1 className="text-3xl md:text-5xl font-bold text-black leading-snug">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Leading not just with ideas, but with implementation
           </h1>
           <div className="bg-black inline-block px-6 py-3 rounded">
             <p className="text-white text-2xl md:text-3xl font-bold">

@@ -21,8 +21,10 @@ const PORT = process.env.PORT || 5000;
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
-    // origin: "frontend url",
+    origin: [
+      "http://localhost:5173",
+      "https://enigma-server-echt.onrender.com",
+    ],
     methods: ["GET", "POST", "DELETE", "PUT", "PATCH"],
     allowedHeaders: [
       "Content-Type",
@@ -34,7 +36,6 @@ app.use(
     credentials: true,
   })
 );
-
 
 app.use(cookieParser());
 app.use(express.json());
