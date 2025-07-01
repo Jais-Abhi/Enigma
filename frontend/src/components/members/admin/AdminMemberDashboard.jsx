@@ -45,7 +45,6 @@ const AdminMemberDashboard = ({ onSuccess }) => {
 
     try {
       const form = new FormData();
-
       for (const key in formData) {
         form.append(key, formData[key]);
       }
@@ -140,9 +139,9 @@ const AdminMemberDashboard = ({ onSuccess }) => {
           <option value="Social Media">Social Media</option>
         </select>
 
+        {/* 🔄 Updated Positions Dropdown */}
         <select name="position" value={formData.position} onChange={handleChange} className="w-full p-2 border border-gray-400 rounded focus:outline-none focus:ring-2 focus:ring-orange-400">
-          <option value="Head">Head</option>
-          <option value="CoHead">CoHead</option>
+          <option value="Incharge">Incharge</option>
           <option value="Member">Member</option>
         </select>
 
@@ -172,10 +171,8 @@ const AdminMemberDashboard = ({ onSuccess }) => {
               <p className="text-sm font-medium">
                 <span
                   className={`inline-block px-2 py-1 text-xs rounded-full ${
-                    member.position === "Head"
-                      ? "bg-green-100 text-green-700"
-                      : member.position === "CoHead"
-                      ? "bg-yellow-100 text-yellow-700"
+                    member.position === "Incharge"
+                      ? "bg-purple-100 text-purple-700"
                       : "bg-blue-100 text-blue-700"
                   }`}
                 >

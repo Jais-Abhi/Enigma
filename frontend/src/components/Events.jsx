@@ -28,7 +28,7 @@ const Events = () => {
   return (
     <div className="bg-white px-4 md:px-6 pt-6 pb-10">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-2xl md:text-4xl font-bold text-center text-gray-800 mb-8">
+        <h2 className="text-5xl md:text-4xl font-bold text-center text-gray-800 mb-8">
           Completed Events
         </h2>
 
