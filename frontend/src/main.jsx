@@ -16,29 +16,36 @@ import Login from "./components/Login.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import store from "./store/store.js";
 import { Provider } from "react-redux";
+import AdminEventList from "./components/events/admin/AdminEventList.jsx";
+import UpdateEventForm from "./components/events/UpdateEventForm.jsx";
+import "react-toastify/dist/ReactToastify.css";
 
-// const isAuthenticated = true;
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
     children: [
-      { 
+      {
         path: "",
-        element: <Main />
-       },
+        element: <Main />,
+      },
       { path: "events", element: <Events /> },
       { path: "gallery", element: <Gallery /> },
       { path: "members", element: <MemberSlider /> },
       { path: "about", element: <About /> },
+
       {
         path: "admin/dashboard",
         element: (
-          <ProtectedRoute store={store} >
+          <ProtectedRoute store={store}>
             <AdminDashboard />
           </ProtectedRoute>
         ),
+        children: [
+          { path: "", element: <AdminEventList /> },
+          { path: "edit-event/:id", element: <UpdateEventForm /> },
+        ],
       },
     ],
   },
@@ -54,12 +61,8 @@ const router = createBrowserRouter([
 ]);
 
 createRoot(document.getElementById("root")).render(
-  // <StrictMode>
-  //   {/* <App /> */}
-  //   <RouterProvider router={router} />
-  // </StrictMode>
   <StrictMode>
-    <Provider store={store}> {/* ✅ Wrap your entire app here */}
+    <Provider store={store}>
       <RouterProvider router={router} />
     </Provider>
   </StrictMode>

@@ -63,7 +63,7 @@ function Contact({ OnActive }) {
         <p className="text-center text-3xl font-semibold mb-6">Get in touch</p>
 
         <div className="mb-4">
-          <label className="block text-xl font-bold mb-1">
+          <label className="block text-[1rem] font-bold mb-1">
             Full Name<span className="text-red-500">*</span>
           </label>
           <input
@@ -74,7 +74,7 @@ function Contact({ OnActive }) {
         </div>
 
         <div className="mb-4">
-          <label className="block text-xl font-bold mb-1">
+          <label className="block -text-[1rem] font-bold mb-1">
             E-mail<span className="text-red-500">*</span>
           </label>
           <input
@@ -85,7 +85,7 @@ function Contact({ OnActive }) {
         </div>
 
         <div className="mb-4">
-          <label className="block text-xl font-bold mb-1">
+          <label className="block text-[1rem] font-bold mb-1">
             Purpose<span className="text-red-500">*</span>
           </label>
           <textarea

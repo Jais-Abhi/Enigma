@@ -53,7 +53,9 @@ const createEvent = async (req, res) => {
 // Get all events
 const getAllEvents = async (req, res) => {
   try {
-    const events = await Event.find().populate("createdBy", "name email");
+    const events = await Event.find()
+      .populate("createdBy", "name email")
+      .sort({ createdAt: -1, eventDateTime: 1 });
     res.status(200).json({ success: true, events });
   } catch (err) {
     res.status(500).json({
@@ -96,12 +98,10 @@ const updateEvent = async (req, res) => {
     }
 
     if (String(event.createdBy) !== req.user.id) {
-      return res
-        .status(403)
-        .json({
-          success: false,
-          message: "Not authorized to update this event",
-        });
+      return res.status(403).json({
+        success: false,
+        message: "Not authorized to update this event",
+      });
     }
 
     let posterUrl = event.poster;
@@ -130,21 +130,17 @@ const updateEvent = async (req, res) => {
       updatedFields,
       { new: true }
     );
-    res
-      .status(200)
-      .json({
-        success: true,
-        message: "Event updated successfully",
-        event: updatedEvent,
-      });
+    res.status(200).json({
+      success: true,
+      message: "Event updated successfully",
+      event: updatedEvent,
+    });
   } catch (err) {
-    res
-      .status(500)
-      .json({
-        success: false,
-        message: "Failed to update event",
-        error: err.message,
-      });
+    res.status(500).json({
+      success: false,
+      message: "Failed to update event",
+      error: err.message,
+    });
   }
 };
 
