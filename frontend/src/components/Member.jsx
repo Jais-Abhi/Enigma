@@ -100,7 +100,7 @@ const MemberList = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white p-4 md:p-10">
-      <h2 className="text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-blue-400 drop-shadow mb-12 animate-fade-in">
+      <h2 className="text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-blue-400 mb-12 animate-fade-in">
         Our Members
       </h2>
 
