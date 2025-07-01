@@ -25,7 +25,7 @@ const LeaderCard = () => {
           <img
             src="/Atebarsir.png"
             alt="Mr. Atebar Haider, Club Coordinator"
-            className="w-70 h-auto rounded-lg grayscale hover:grayscale-0 transition duration-300"
+            className="w-70 h-auto rounded-lg"
           />
           <div className="mt-4 bg-black text-white px-4 py-2 rounded-lg text-lg font-semibold">
             MR. ATEBAR HAIDER

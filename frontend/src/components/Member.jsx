@@ -100,9 +100,9 @@ const MemberList = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white p-4 md:p-10">
-      <h2 className="text-5xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-blue-400 drop-shadow mb-12 animate-fade-in">
-        Our Members
-      </h2>
+       <h2 className="text-5xl md:text-4xl font-bold text-center text-gray-800 mb-8">
+          Our Team Members
+        </h2>
 
       <div className="flex justify-center gap-4 mb-12">
         <button onClick={() => setTab("active")} className={buttonClass("active")}>

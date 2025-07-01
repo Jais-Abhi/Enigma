@@ -13,7 +13,9 @@ const MainGallery = () => {
   return (
     <div className="bg-gray-100 py-16">
       <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-4">Our GALLERY</h2>
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-center mb-12 text-blue-700 drop-shadow-md">
+          OUR GALLERY
+        </h2>
         <p className="text-center text-gray-600 mb-8">
           Memories from our latest events and Workshops
         </p>
