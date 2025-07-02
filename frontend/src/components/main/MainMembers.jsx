@@ -1,9 +1,11 @@
 import React from "react";
+import { FaLinkedin, FaGithub } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 
 const LeaderCard = () => {
   return (
     <div className="w-full bg-gray-100 py-10 px-4 md:px-20">
-       <h2 className="text-3xl sm:text-4xl font-extrabold text-center mb-12 text-blue-700 drop-shadow-md">
+      <h2 className="text-3xl sm:text-4xl font-extrabold text-center mb-12 text-blue-700 drop-shadow-md">
         Club Coordinator
       </h2>
       <div className="flex flex-col md:flex-row items-center justify-between p-6 md:p-12 rounded-2xl shadow-md w-full bg-white">
@@ -17,6 +19,7 @@ const LeaderCard = () => {
             </p>
           </div>
         </div>
+
         <div
           className="flex flex-col items-center mt-8 md:mt-0"
           role="img"
@@ -32,6 +35,23 @@ const LeaderCard = () => {
           </div>
           <div className="mt-2 bg-white px-4 py-2 rounded-full shadow text-sm font-medium text-center">
             Assistant Professor, Department of Computer Science
+          </div>
+
+          <div className="flex gap-4 mt-4">
+            <a
+              href="#" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-700 text-2xl hover:scale-110 transition-transform"
+            >
+              <FaLinkedin />
+            </a>
+            <a
+              href="#"
+              className="text-black-600 text-2xl hover:scale-110 transition-transform"
+            >
+              <MdEmail />
+            </a>
           </div>
         </div>
       </div>
