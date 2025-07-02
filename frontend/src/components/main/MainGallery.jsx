@@ -1,12 +1,36 @@
 import React from "react";
 
 const galleryImages = [
-  "/gallery-1.jpg",
-  "/gallery-2.jpg",
-  "/gallery-4.jpg",
-  "/gallery-3.jpg",
-  "/gallery-5.jpg",
-  "/gallery-3.jpg",
+  {
+    src: "/gallery-1.jpg",
+    title: "Tech Workshop",
+    description: "Hands-on coding session with experts.",
+  },
+  {
+    src: "/gallery-2.jpg",
+    title: "AI Conference",
+    description: "Exploring the future of AI in education.",
+  },
+  {
+    src: "/gallery-4.jpg",
+    title: "Hackathon",
+    description: "48-hour coding marathon with prizes.",
+  },
+  {
+    src: "/gallery-3.jpg",
+    title: "Seminar",
+    description: "Guest lecture by industry professionals.",
+  },
+  {
+    src: "/gallery-5.jpg",
+    title: "Robotics Expo",
+    description: "Showcasing student-built robots.",
+  },
+  {
+    src: "/events.jpg",
+    title: "Annual Meetup",
+    description: "Celebrating a year of innovation.",
+  },
 ];
 
 const MainGallery = () => {
@@ -21,16 +45,24 @@ const MainGallery = () => {
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {galleryImages.map((src, index) => (
+          {galleryImages.map((img, index) => (
             <div
               key={index}
-              className="overflow-hidden rounded-lg shadow-md group"
+              className="relative overflow-hidden rounded-lg shadow-md group"
             >
               <img
-                src={src}
-                alt={`image ${index + 1}`}
+                src={img.src}
+                alt={img.title}
                 className="w-full h-64 object-cover transform group-hover:scale-105 transition duration-300"
               />
+              <div className="absolute inset-0 flex flex-col justify-center items-center 
+                text-center px-4 opacity-0 group-hover:opacity-100 
+                transition duration-300">
+                <div className="bg-white/70 backdrop-blur-sm rounded p-3">
+                  <h3 className="text-lg font-semibold text-gray-800">{img.title}</h3>
+                  <p className="text-sm text-gray-700">{img.description}</p>
+                </div>
+              </div>
             </div>
           ))}
         </div>
