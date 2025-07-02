@@ -12,13 +12,13 @@ const Footer = () => {
             collaboration, and technical excellence among passionate students.
           </p>
           <div className="flex space-x-4">
-            <a href="#" className="text-white hover:text-gray-300 text-xl">
+            <a href="https://www.instagram.com/enigma_aimt/?hl=en" className="text-white hover:text-gray-300 text-xl">
               <FaInstagram />
             </a>
-            <a href="#" className="text-white hover:text-gray-300 text-xl">
+            <a href="https://www.linkedin.com/company/enigmaaimt/?viewAsMember=true" className="text-white hover:text-gray-300 text-xl">
               <FaLinkedinIn />
             </a>
-            <a href="#" className="text-white hover:text-gray-300 text-xl">
+            <a href="https://chat.whatsapp.com/DYUbtj4sRBB5f7BKZi5k0F" className="text-white hover:text-gray-300 text-xl">
               <FaWhatsapp />
             </a>
           </div>
@@ -40,7 +40,7 @@ const Footer = () => {
           <ul className="text-sm text-gray-300 space-y-2">
             <li>Ambalika Institute of Management and Technology, Lucknow</li>
             <li>enigmaclub123@gmail.com</li>
-            <li>+91 000000000</li>
+            <li>+91 8877213461</li>
           </ul>
         </div>
       </div>

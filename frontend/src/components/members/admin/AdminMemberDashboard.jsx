@@ -133,7 +133,7 @@ const AdminMemberDashboard = ({ onSuccess }) => {
           <option value="AI/ML & Cloud">AI/ML & Cloud</option>
           <option value="Cybersecurity">Cybersecurity</option>
           <option value="Technical">Technical</option>
-          <option value="Knowledge & Collaboration Hub">Knowledge & Collaboration Hub</option>
+          <option value="Co-Founders">Co-Founders</option>
           <option value="DSA & CP">DSA & CP</option>
           <option value="Web Development">Web Development</option>
           <option value="Social Media">Social Media</option>
@@ -141,7 +141,8 @@ const AdminMemberDashboard = ({ onSuccess }) => {
 
         {/* 🔄 Updated Positions Dropdown */}
         <select name="position" value={formData.position} onChange={handleChange} className="w-full p-2 border border-gray-400 rounded focus:outline-none focus:ring-2 focus:ring-orange-400">
-          <option value="Incharge">Incharge</option>
+          <option value="Head">Head</option>
+          <option value="CoHead">CoHead</option>
           <option value="Member">Member</option>
         </select>
 

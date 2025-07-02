@@ -12,7 +12,7 @@ const MemberSchema = new mongoose.Schema(
         "AI/ML & Cloud",
         "Cybersecurity",
         "Technical",
-        "Knowledge & Collaboration Hub",
+        "Co-Founder",
         "DSA & CP",
         "Web Development",
         "Social Media",
@@ -21,7 +21,7 @@ const MemberSchema = new mongoose.Schema(
     },
     position: {
       type: String,
-      enum: ["Member", "Incharge"],
+      enum: ["Member", "Incharge","Head","CoHead"],
       default: "Member",
     },
     contactNo: { type: String, required: true },
