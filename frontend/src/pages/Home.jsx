@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../components/Header";
-import Main from "../components/main/Main";
+import MainSlider from "../components/main/MainSlider";
 import About from "../components/About";
 import Events from "../components/Events";
 import Member from "../components/Member";
@@ -13,10 +13,7 @@ const Home = () => {
   return (
     <>
       <Header />
-      {/* <Main />
-      <About />
-      <Events/>
-      <Gallery /> */}
+      < MainSlider/>
       <Outlet />
       <Footer />
 

@@ -4,11 +4,14 @@ import { MdEmail } from "react-icons/md";
 
 const LeaderCard = () => {
   return (
-    <div className="w-full bg-gray-100 py-10 px-4 md:px-20">
-      <h2 className="text-3xl sm:text-4xl font-extrabold text-center mb-12 text-blue-700 drop-shadow-md">
+    <div className="w-full bg-white py-10 px-4 md:px-20">
+      <h2 className="text-3xl sm:text-4xl font-extrabold text-center mb-2 text-blue-800 drop-shadow-md">
         Club Coordinator
       </h2>
-      <div className="flex flex-col md:flex-row items-center justify-between p-6 md:p-12 rounded-2xl shadow-md w-full bg-white">
+      <p className="mt-2 text-gray-600 text-sm sm:text-base font-medium text-center mb-12">
+          Meet the leaders who drive innovation and collaboration within our club
+        </p>
+      <div className="flex flex-col md:flex-row items-center justify-between p-6 md:p-12 rounded-2xl shadow-md w-full bg-white border-2 border-gray-300 rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 p-8">
         <div className="text-center md:text-left md:w-2/3 space-y-6">
           <h1 className="text-3xl md:text-5xl font-bold text-black leading-snug">
             Leading not just with ideas, but with implementation
@@ -35,23 +38,6 @@ const LeaderCard = () => {
           </div>
           <div className="mt-2 bg-white px-4 py-2 rounded-full shadow text-sm font-medium text-center">
             Assistant Professor, Department of Computer Science
-          </div>
-
-          <div className="flex gap-4 mt-4">
-            <a
-              href="#" 
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-700 text-2xl hover:scale-110 transition-transform"
-            >
-              <FaLinkedin />
-            </a>
-            <a
-              href="#"
-              className="text-black-600 text-2xl hover:scale-110 transition-transform"
-            >
-              <MdEmail />
-            </a>
           </div>
         </div>
       </div>

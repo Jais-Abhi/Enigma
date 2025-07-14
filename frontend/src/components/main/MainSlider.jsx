@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import {useGetAllSliders} from "../../hooks/sliders/useGetAllSliders";
+import { useGetAllSliders } from "../../hooks/sliders/useGetAllSliders";
 
 const MainSlider = () => {
   const { sliders, loading } = useGetAllSliders();
@@ -20,7 +20,10 @@ const MainSlider = () => {
       elapsedTimeRef.current += delta;
 
       if (progressBarRef.current) {
-        const progressPercent = Math.min((elapsedTimeRef.current / 4000) * 100, 100);
+        const progressPercent = Math.min(
+          (elapsedTimeRef.current / 4000) * 100,
+          100
+        );
         progressBarRef.current.style.width = `${progressPercent}%`;
       }
 
@@ -75,8 +78,10 @@ const MainSlider = () => {
     lastTimestampRef.current = null;
   };
 
-  if (loading) return <p className="text-center py-10">Loading Sliders...</p>;
-  if (!sliders.length) return <p className="text-center py-10">No sliders available</p>;
+  if (loading)
+    return <p className="text-center py-10">Loading Sliders...</p>;
+  if (!sliders.length)
+    return <p className="text-center py-10">No sliders available</p>;
 
   return (
     <div
@@ -109,21 +114,38 @@ const MainSlider = () => {
         className="flex transition-transform duration-800 ease-in-out"
         style={{ transform: `translateX(-${index * 100}%)` }}
       >
-        {sliders.map((slide, idx) => (
-          <img
-            key={idx}
-            src={slide.image || "/fallback.jpg"}
-            alt={`Slide ${idx}`}
-            className="min-w-full object-cover h-[300px] md:h-[600px] lg:h-[600px]"
-          />
-        ))}
+        {sliders.map((slide, idx) => {
+          const isPrev = index % sliders.length === idx;
+          return (
+            <div
+              key={idx}
+              className="min-w-full transition-transform duration-1000 ease-in-out"
+              style={{
+                transform: isPrev ? "scale(1.05)" : "scale(1)",
+                transition: "transform 1s ease-in-out",
+              }}
+            >
+              <img
+                src={slide.image || "/fallback.jpg"}
+                alt={`Slide ${idx}`}
+                className="w-full h-[300px] md:h-[600px] lg:h-[600px] object-cover"
+              />
+            </div>
+          );
+        })}
+
         {/* Cloned first slide for loop transition */}
-        <img
+        <div
           key="clone"
-          src={sliders[0]?.poster || "/fallback.jpg"}
-          alt="Slide clone"
-          className="min-w-full object-cover h-[300px] md:h-[600px] lg:h-[600px]"
-        />
+          className="min-w-full"
+          style={{ transform: "scale(1)" }}
+        >
+          <img
+            src={sliders[0]?.image || "/fallback.jpg"}
+            alt="Slide clone"
+            className="w-full h-[300px] md:h-[600px] lg:h-[600px] object-cover"
+          />
+        </div>
       </div>
 
       {/* Navigation Buttons */}

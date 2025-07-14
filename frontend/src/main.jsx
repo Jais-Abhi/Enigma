@@ -5,6 +5,7 @@ import App from "./App.jsx";
 import Home from "./pages/Home.jsx";
 import { Route, createBrowserRouter, RouterProvider } from "react-router";
 import Events from "./components/Events.jsx";
+import EventAll from "./components/EventAll.jsx";
 import MemberSlider from "./components/Member.jsx";
 import Contact from "./components/contact.jsx";
 import About from "./components/About.jsx";
@@ -31,10 +32,14 @@ const router = createBrowserRouter([
         element: <Main />,
       },
       { path: "events", element: <Events /> },
+     {
+      path: "events/:id",element: <EventAll />,
+},
+
       { path: "gallery", element: <Gallery /> },
       { path: "members", element: <MemberSlider /> },
       { path: "about", element: <About /> },
-
+     
       {
         path: "admin/dashboard",
         element: (

@@ -26,12 +26,14 @@ const Events = () => {
   }
 
   return (
-    <div className="bg-white px-4 md:px-6 pt-6 pb-10">
+    <div className="bg-gray-100 px-4 md:px-6 pt-6 pb-10">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-5xl md:text-4xl font-bold text-center text-gray-800 mb-8">
+        <h2 className="text-5xl md:text-4xl font-bold text-center text-blue-800 mb-2">
           Completed Events
         </h2>
-
+       <p className="text-center text-gray-600 text-sm sm:text-base font-medium mb-12">
+        From Ideas to Execution – Our Journey So Far
+      </p>
         {completedEvents.length === 0 ? (
           <p className="text-center text-gray-500">No completed events</p>
         ) : (

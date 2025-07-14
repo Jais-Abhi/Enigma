@@ -10,7 +10,7 @@ export default function Header() {
   const isActive = (path) => location.pathname === path;
 
   return (
-    <div className="flex flex-col relative bg-gray-200 w-full">
+    <div className="flex flex-col relative bg-white-200 w-full">
       {/* Main Navbar Container */}
       <div className="flex items-center w-full">
         {/* Logo and Title */}

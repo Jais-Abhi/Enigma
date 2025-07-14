@@ -2,7 +2,7 @@ import React from 'react';
 
 const About = () => {
   return (
-    <div className="bg-white flex justify-center py-6">
+    <div className="bg-gray-100 flex justify-center py-6">
       <div
         className="
           flex flex-col items-center 
@@ -29,8 +29,7 @@ const About = () => {
         {/* Text Content */}
         <div className="text-center px-2 sm:px-0">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">ABOUT US</h2>
-
-          <h1 className="text-2xl md:text-3xl text-gray-900 mb-4">
+          <h1 className="text-2xl md:text-3xl text-blue-700 mb-4 font-semibold">
             Welcome to Enigma Technical Club
           </h1>
 

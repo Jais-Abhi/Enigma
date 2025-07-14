@@ -35,12 +35,12 @@ const galleryImages = [
 
 const MainGallery = () => {
   return (
-    <div className="bg-gray-100 py-16">
+    <div className="bg-white py-16">
       <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-center mb-12 text-blue-700 drop-shadow-md">
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-center mb-2 text-blue-800 drop-shadow-md">
           OUR GALLERY
         </h2>
-        <p className="text-center text-gray-600 mb-8">
+        <p className="mt-2 text-gray-600 text-sm sm:text-base font-medium text-center mb-12">
           Memories from our latest events and Workshops
         </p>
 
@@ -48,7 +48,7 @@ const MainGallery = () => {
           {galleryImages.map((img, index) => (
             <div
               key={index}
-              className="relative overflow-hidden rounded-lg shadow-md group"
+              className="relative overflow-hidden rounded-lg shadow-md group border-3 border-gray-400"
             >
               <img
                 src={img.src}

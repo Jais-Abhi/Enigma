@@ -45,7 +45,7 @@ const MemberList = () => {
         <img
           src={member.image}
           alt={member.name}
-          className="w-28 h-28 object-cover rounded-full border-4 border-blue-500 shadow mb-4 hover:scale-105 transition"
+          className="w-28 h-28 object-cover rounded-full border-4 border-white-600 shadow mb-4 hover:scale-105 transition"
         />
       )}
       <h2 className="text-lg font-bold text-gray-800">{member.name}</h2>
@@ -104,16 +104,11 @@ const MemberList = () => {
       );
     });
   };
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white p-4 md:p-10">
-
-      <h2 className="text-5xl md:text-4xl font-bold text-center text-gray-800 mb-8">
+    <div className="min-h-screen bg-gray-100 p-4 md:p-10">
+      <h2 className="text-5xl md:text-4xl font-bold text-center text-blue-800 mb-8">
         Our Team Members
       </h2>
-
-
-
       <div className="flex justify-center gap-4 mb-12">
         <button onClick={() => setTab("active")} className={buttonClass("active")}>
           Active Members
@@ -126,7 +121,7 @@ const MemberList = () => {
       <div className="max-w-7xl mx-auto">
         {tab === "active" ? (
           <>
-            <h3 className="text-2xl font-semibold text-center text-blue-800 mb-6">
+            <h3 className="text-2xl font-semibold text-center text-brown-800 mb-6">
               Active Members
             </h3>
             {activeMembers.length === 0 ? (
@@ -137,7 +132,7 @@ const MemberList = () => {
           </>
         ) : (
           <>
-            <h3 className="text-2xl font-semibold text-center text-blue-800 mb-6">
+            <h3 className="text-2xl font-semibold text-center text-brown-800 mb-6">
               Past Members
             </h3>
             {pastMembers.length === 0 ? (
@@ -148,8 +143,7 @@ const MemberList = () => {
           </>
         )}
       </div>
-
-      {/* Member Detail Modal */}
+      
       {isModalOpen && selectedMember && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"

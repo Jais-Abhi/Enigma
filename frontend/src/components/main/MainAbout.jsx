@@ -5,8 +5,8 @@ const MainAbout = () => {
     <div className="bg-white flex justify-center md:px-16 py-6">
       <div className="flex flex-col md:flex-row items-start max-w-7xl w-full gap-10">
         <div className="w-full md:w-full text-center md:text-left">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">ABOUT US</h2>
-          <div className="h-1 w-30 bg-cyan-300 mx-auto md:mx-0 mb-6"></div>
+          <h2 className="text-3xl md:text-4xl font-bold text-blue-800 mb-2">ABOUT US</h2>
+          <div className="h-1 w-40 bg-cyan-300 mx-auto md:mx-0 mb-6"></div>
 
           <h1 className="text-2xl md:text-3xl text-gray-900 mb-4">
             Welcome to Enigma Technical Club
@@ -31,6 +31,7 @@ const MainAbout = () => {
         </div>
       </div>
     </div>
+    
   );
 };
 

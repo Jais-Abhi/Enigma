@@ -1,135 +1,103 @@
 import React from "react";
 import useGetAllEvents from "../../hooks/events/useGetAllEvents";
-import { motion, useMotionValue, useTransform, animate } from "framer-motion";
+import { Link } from "react-router-dom";
 
-// TiltCard Component
-const TiltCard = ({ children }) => {
-  const x = useMotionValue(150);
-  const y = useMotionValue(150);
-
-  const rotateX = useTransform(y, [0, 300], [10, -10]);
-  const rotateY = useTransform(x, [0, 300], [-10, 10]);
-
-  const handleMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const posX = e.clientX - rect.left;
-    const posY = e.clientY - rect.top;
-    animate(x, posX, { type: "tween", duration: 0.4, ease: "easeOut" });
-    animate(y, posY, { type: "tween", duration: 0.4, ease: "easeOut" });
-  };
-
-  const handleMouseLeave = () => {
-    animate(x, 150, { type: "tween", duration: 0.6, ease: "easeOut" });
-    animate(y, 150, { type: "tween", duration: 0.6, ease: "easeOut" });
-  };
-
-  return (
-    <motion.div
-      style={{ rotateX, rotateY, transformPerspective: 1000 }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      initial={{ scale: 1 }}
-      whileHover={{
-        scale: 1.05,
-        transition: { duration: 0.5, ease: "easeOut" },
-      }}
-    >
-      {children}
-    </motion.div>
-  );
-};
-
-// MainEvent Component
-const MainEvent = () => {
+const UpcomingEvents = () => {
   const { events, loading, error } = useGetAllEvents();
 
-  if (loading)
+  const now = new Date();
+  const upcomingEvents = events.filter(
+    (event) => new Date(event.eventDateTime) >= now
+  );
+
+  if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <p className="text-lg text-blue-600 animate-pulse">
-          Loading upcoming events...
-        </p>
+        <p className="text-lg text-blue-600 animate-pulse">Loading upcoming events...</p>
       </div>
     );
+  }
 
-  if (error)
+  if (error) {
     return (
       <div className="flex justify-center items-center h-screen">
         <p className="text-lg text-red-600">Error fetching events</p>
       </div>
     );
-
-  const now = new Date();
-  const upcomingEvents = events.filter(
-    (event) => new Date(event.eventDateTime) > now
-  );
+  }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-100 to-blue-50 py-10 px-4 sm:px-8 md:px-16 lg:px-24">
-      <h2 className="text-3xl sm:text-4xl font-extrabold text-center mb-12 text-blue-800 drop-shadow-md">
-        Upcoming Events
-      </h2>
+    <div className="bg-white px-4 md:px-6 pt-6 pb-12">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-2 text-blue-800 drop-shadow-md group-hover:scale-105 transition-transform duration-300">
+            UPCOMING EVENTS
+          </h2>
+          <p className="mt-2 text-gray-600 text-sm sm:text-base font-medium text-center mb-12">
+              Don't miss out on the latest happenings. Mark your calendars!
+           </p>
+        <div className="bg-white border-2 border-gray-300 rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 p-8">
 
-      {upcomingEvents.length === 0 ? (
-        <p className="text-center text-gray-600 py-24">
-          No Upcoming events available.
-        </p>
-      ) : (
-        <div className="grid gap-6 sm:gap-8 md:gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          {upcomingEvents.map((event) => (
-            <TiltCard key={event._id}>
-              <div className="bg-white rounded-2xl overflow-hidden border-2 border-transparent transition-all duration-300 group hover:shadow-xl hover:scale-[1.02] flex flex-col h-full">
-                <img
-                  src={event.poster}
-                  alt={event.title}
-                  loading="lazy"
-                  className="w-full h-[250px] object-contain bg-white p-2"
-                />
-                <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between">
-                  <div>
-                    <h3 className="text-lg sm:text-xl font-bold text-blue-800">
-                      {event.title}
-                    </h3>
-                    <p className="text-sm text-gray-600 mt-2 line-clamp-3">
-                      {event.description}
-                    </p>
-                  </div>
-                  <div className="mt-4 space-y-1 text-sm text-gray-700">
-                    <p>
-                      <strong>🏢 Committee:</strong>{" "}
-                      {event.community || "N/A"}
-                    </p>
-                    <p>
-                      <strong>📍 Venue:</strong> {event.venue || "TBD"}
-                    </p>
-                    <p>
-                      <strong>🕒 Date:</strong>{" "}
-                      {new Date(event.eventDateTime).toLocaleString()}
-                    </p>
-                    <p>
-                      <strong>👤 Organizer:</strong>{" "}
-                      {event.organizerName || "Unknown"}
-                    </p>
+          {upcomingEvents.length === 0 ? (
+            <p className="text-center text-gray-500">No upcoming events</p>
+          ) : (
+            <>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                {upcomingEvents.map((event) => {
+                  const dateObj = new Date(event.eventDateTime);
+                  const day = dateObj.getDate();
+                  const monthYear = dateObj.toLocaleDateString("en-US", {
+                    month: "short",
+                    year: "numeric",
+                  });
 
-                    {event.registrationLink && (
-                      <a
-                        href={event.registrationLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block mt-4 text-center bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 hover:scale-105 transition-all font-semibold"
-                      >
-                        Register Now
-                      </a>
-                    )}
-                  </div>
-                </div>
+                  return (
+                    <div
+                      key={event._id}
+                      className="bg-white border border-gray-300 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 group"
+                    >
+                      <div className="relative w-full h-60 bg-white">
+                        <img
+                          src={event.poster}
+                          alt={event.title}
+                          className="w-full h-full object-contain p-2 transition-transform duration-300 group-hover:scale-105"
+                        />
+                        <div className="absolute top-3 left-3 bg-red-800 text-white px-3 py-1 rounded text-center shadow-md">
+                          <div className="text-lg font-bold leading-none">{day}</div>
+                          <div className="text-xs">{monthYear}</div>
+                        </div>
+                      </div>
+
+                      <div className="p-5">
+                        <h3 className="text-lg font-semibold text-gray-800">
+                          {event.title}
+                        </h3>
+                        <p className="text-sm text-gray-600 mt-2 line-clamp-3 font-bold">
+                          {event.description}
+                        </p>
+                        <Link to={`/events/${event._id}`}>
+                          <button className="mt-4 bg-red-800 hover:bg-red-700 text-white text-sm px-4 py-2 rounded transition duration-300">
+                            LEARN MORE
+                          </button>
+                        </Link>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
-            </TiltCard>
-          ))}
+              <div className="mt-12 text-center">
+                <Link to="/Events">
+                  <button className="text-red-800 border border-red-800 px-6 py-2 rounded-full hover:bg-red-800 hover:text-white transition duration-300">
+                    SEE ALL EVENTS
+                  </button>
+                </Link>
+              </div>
+            </>
+          )}
         </div>
-      )}
+      </div>
     </div>
+    
   );
 };
 
-export default MainEvent;
+export default UpcomingEvents;
