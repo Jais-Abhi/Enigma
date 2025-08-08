@@ -20,7 +20,7 @@ import { Provider } from "react-redux";
 import AdminEventList from "./components/events/admin/AdminEventList.jsx";
 import UpdateEventForm from "./components/events/UpdateEventForm.jsx";
 import "react-toastify/dist/ReactToastify.css";
-
+import Developers from "./components/developers/Developers.jsx";
 
 const router = createBrowserRouter([
   {
@@ -32,14 +32,15 @@ const router = createBrowserRouter([
         element: <Main />,
       },
       { path: "events", element: <Events /> },
-     {
-      path: "events/:id",element: <EventAll />,
-},
+      {
+        path: "events/:id",
+        element: <EventAll />,
+      },
 
       { path: "gallery", element: <Gallery /> },
       { path: "members", element: <MemberSlider /> },
       { path: "about", element: <About /> },
-     
+      { path: "developers", element: <Developers /> },
       {
         path: "admin/dashboard",
         element: (
