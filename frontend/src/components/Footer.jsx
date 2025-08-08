@@ -9,17 +9,26 @@ const Footer = () => {
         <div>
           <h2 className="text-xl font-semibold mb-3">Enigma Technical Club</h2>
           <p className="text-sm text-gray-200 mb-4">
-            A student-led club dedicated to fostering innovation,
-            collaboration, and technical excellence among passionate students.
+            A student-led club dedicated to fostering innovation, collaboration,
+            and technical excellence among passionate students.
           </p>
           <div className="flex space-x-4">
-            <a href="https://www.instagram.com/enigma_aimt/?hl=en" className="text-white hover:text-gray-300 text-xl">
+            <a
+              href="https://www.instagram.com/enigma_aimt/?hl=en"
+              className="text-white hover:text-gray-300 text-xl"
+            >
               <FaInstagram />
             </a>
-            <a href="https://www.linkedin.com/company/enigmaaimt/?viewAsMember=true" className="text-white hover:text-gray-300 text-xl">
+            <a
+              href="https://www.linkedin.com/company/enigmaaimt/?viewAsMember=true"
+              className="text-white hover:text-gray-300 text-xl"
+            >
               <FaLinkedinIn />
             </a>
-            <a href="https://chat.whatsapp.com/DYUbtj4sRBB5f7BKZi5k0F" className="text-white hover:text-gray-300 text-xl">
+            <a
+              href="https://chat.whatsapp.com/DYUbtj4sRBB5f7BKZi5k0F"
+              className="text-white hover:text-gray-300 text-xl"
+            >
               <FaWhatsapp />
             </a>
           </div>
@@ -27,12 +36,34 @@ const Footer = () => {
         <div>
           <h2 className="text-xl font-semibold mb-3">Quick Links</h2>
           <ul className="space-y-2 text-gray-300 text-sm">
-            <li><Link to="/" className="hover:text-white">Home</Link></li>
-            <li><Link to="/about" className="hover:text-white">About Us</Link></li>
-            <li><Link to="/events" className="hover:text-white">Events</Link></li>
-            <li><Link to="/members" className="hover:text-white">Our Team</Link></li>
-            <li><Link to="/gallery" className="hover:text-white">Our Gallery</Link></li>
-            <li><Link to="/admin/login">Login</Link></li>
+            <li>
+              <Link to="/" className="hover:text-white">
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link to="/about" className="hover:text-white">
+                About Us
+              </Link>
+            </li>
+            <li>
+              <Link to="/events" className="hover:text-white">
+                Events
+              </Link>
+            </li>
+            <li>
+              <Link to="/members" className="hover:text-white">
+                Our Team
+              </Link>
+            </li>
+            <li>
+              <Link to="/gallery" className="hover:text-white">
+                Our Gallery
+              </Link>
+            </li>
+            <li>
+              <Link to="/admin/login">Login</Link>
+            </li>
           </ul>
         </div>
 
@@ -45,10 +76,18 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-      <hr className="w-full bg-gray-500 mt-5"/>
+      <hr className="w-full bg-gray-500 mt-5" />
       <div>
         <p className="text-center text-sm text-gray-400 mt-4">
-          &copy; {new Date().getFullYear()} Enigma Technical Club. All rights reserved. | Developed by Web Development Team
+          &copy; {new Date().getFullYear()} Enigma Technical Club. All rights
+          reserved.{" "}
+          <p>
+            Developed by{" "}
+            <span className="text-gray hover:text-white">
+              {" "}
+              <Link to="/developers">Web Development Team</Link>
+            </span>
+          </p>
         </p>
       </div>
     </footer>

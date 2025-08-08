@@ -47,3 +47,4 @@ app.use("/api/event", eventRouter);
 app.use("/api/slider", sliderRouter);
 app.use("/api/member", memberRouter);
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
+
