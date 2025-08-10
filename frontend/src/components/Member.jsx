@@ -45,7 +45,7 @@ const MemberList = () => {
         <img
           src={member.image}
           alt={member.name}
-          className="w-28 h-28 object-cover rounded-full border-4 border-white-600 shadow mb-4 hover:scale-105 transition"
+          className="w-28 h-28 object-cover rounded-full border-4 border-blue-600 shadow mb-4 hover:scale-105 transition"
         />
       )}
       <h2 className="text-lg font-bold text-gray-800">{member.name}</h2>
@@ -62,11 +62,22 @@ const MemberList = () => {
     });
 
     return Object.entries(grouped).map(([committeeName, membersInGroup]) => {
-      const headAndCoHead = membersInGroup.filter(
-        (m) =>
-          m.position?.toLowerCase() === "head" ||
-          m.position?.toLowerCase() === "cohead"
-      );
+      // Filter Head and CoHead
+      const headAndCoHead = membersInGroup
+        .filter(
+          (m) =>
+            m.position?.toLowerCase() === "head" ||
+            m.position?.toLowerCase() === "cohead"
+        )
+        .sort((a, b) => {
+          const order = { head: 1, cohead: 2 };
+          return (
+            (order[a.position?.toLowerCase()] || 99) -
+            (order[b.position?.toLowerCase()] || 99)
+          );
+        });
+
+      // Filter Other Members
       const others = membersInGroup.filter(
         (m) =>
           m.position?.toLowerCase() !== "head" &&
@@ -104,6 +115,7 @@ const MemberList = () => {
       );
     });
   };
+
   return (
     <div className="min-h-screen bg-gray-100 p-4 md:p-10">
       <h2 className="text-5xl md:text-4xl font-bold text-center text-blue-800 mb-8">
@@ -143,10 +155,10 @@ const MemberList = () => {
           </>
         )}
       </div>
-      
+
       {isModalOpen && selectedMember && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm"
           onClick={() => setIsModalOpen(false)}
         >
           <div
@@ -175,7 +187,7 @@ const MemberList = () => {
 
               <div className="flex gap-4 text-xl mt-2 text-gray-700">
                 {selectedMember.email && (
-                  <a href={`mailto:${selectedMember.email}`} title={selectedMember.email}>
+                   <a href={`mailto:${selectedMember.email}`}title={selectedMember.email}>
                     <MdEmail className="hover:text-blue-600" />
                   </a>
                 )}

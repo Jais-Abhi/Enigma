@@ -85,15 +85,16 @@ const SliderDashboard = () => {
 
   return (
     <div className="p-4">
-      <h2 className="text-2xl font-bold mb-4">Slider Management</h2>
-      <form onSubmit={handleSubmit} className="mb-6">
+      <div className="flex flex-col w-full justify-center items-center " >
+      <form onSubmit={handleSubmit} className="mb-6 border p-4">
+        <h2 className="text-2xl font-bold mb-4">Slider Management</h2>
         <input
           type="text"
           name="title"
           placeholder="Title"
           value={formData.title}
           onChange={handleChange}
-          className="block mb-2 p-2 border"
+          className="block mb-2 p-3 w-full border"
           required
         />
         <input
@@ -102,25 +103,25 @@ const SliderDashboard = () => {
           placeholder="Subtitle"
           value={formData.subtitle}
           onChange={handleChange}
-          className="block mb-2 p-2 border"
+          className="block mb-2 p-3 w-full border"
           required
         />
         <input
           type="file"
           name="image"
           onChange={handleChange}
-          className="block mb-2"
+          className="block mb-2 p-3 w-full border"
           accept="image/*"
           required={!isUpdating}
         />
         <button
           type="submit"
-          className="px-4 py-2 bg-blue-500 text-white rounded"
+          className="px-4 py-2 w-full bg-blue-500 text-white rounded"
         >
           {isUpdating ? "Update" : "Add"} Slider
         </button>
       </form>
-
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {sliders.map((slider) => (
           <div key={slider._id} className="p-4 border rounded shadow">

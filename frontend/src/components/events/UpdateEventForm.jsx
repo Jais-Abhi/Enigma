@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useGetEventById } from "../../hooks/events/useGetEventById";
 import { useUpdateOrDeleteEvent } from "../../hooks/events/useUpdateOrDeleteEvent";
 import { useNavigate, useParams } from "react-router";
+import { X } from "lucide-react";
 
 const UpdateEventForm = () => {
   const { id } = useParams();
@@ -55,7 +56,15 @@ const UpdateEventForm = () => {
   if (loadingEvent) return <p className="text-center mt-10 text-lg">Loading event...</p>;
 
   return (
-    <div className="max-w-7xl mx-auto mt-10 p-6 border border-black shadow-lg shadow-black rounded-lg">
+    <div className="max-w-7xl mx-auto mt-10 p-6 border border-black shadow-lg shadow-black rounded-lg relative">
+      {/* Close Button */}
+      <button
+        onClick={() => navigate(-1)}
+        className="absolute top-4 right-4 text-gray-600 hover:text-red-600 transition"
+      >
+        <X size={40} />
+      </button>
+
       <h1 className="text-3xl font-bold mb-6 text-center text-black">Update Event</h1>
       <form onSubmit={handleUpdate} className="flex flex-wrap gap-6">
         <div className="w-full md:w-[32%]">

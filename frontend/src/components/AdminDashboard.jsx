@@ -27,14 +27,14 @@ const AdminDashboard = () => {
   };
 
   const buttonClass = (value) =>
-    `p-4 rounded-xl ${
+    `p-2 rounded-xl ${
       tab === value ? "bg-green-500 text-white" : "bg-green-300"
     }`;
 
   return (
     <div>
-      <div className="mt-20 bg-gray-300">
-        <div className="flex justify-between items-center px-6 py-4">
+      <div className="bg-gray-300">
+        <div className="flex justify-between items-center px-6 py-1">
           <div className="text-2xl flex gap-5">
             <button
               onClick={() => setTab("events")}
@@ -67,11 +67,12 @@ const AdminDashboard = () => {
       <div className="p-6 space-y-6">
         {tab === "events" && (
           <>
-            <Outlet />
+            
             <div className="bg-white p-4 rounded-xl shadow">
               <h2 className="text-2xl font-semibold mb-4">Create New Event</h2>
               <CreateEventForm onSuccess={refetchEvents} />
             </div>
+            <Outlet />
           </>
         )}
 
@@ -82,7 +83,7 @@ const AdminDashboard = () => {
               <Slider />
             </div> */}
             <div className="bg-white p-4 rounded-xl shadow">
-              <h2 className="text-2xl font-semibold mb-4">Create New Slider</h2>
+              <p className="text-2xl font-semibold">Create New Slider</p>
               <SliderDashboard onSuccess={refetchSliders} />
             </div>
           </>
