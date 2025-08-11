@@ -35,7 +35,7 @@ const galleryImages = [
 
 const MainGallery = () => {
   return (
-    <div className="bg-white py-16">
+    <div className="bg-gray-200 py-16">
       <div className="max-w-6xl mx-auto px-4">
         <h2 className="text-3xl sm:text-4xl font-extrabold text-center mb-2 text-blue-800 drop-shadow-md">
           OUR GALLERY

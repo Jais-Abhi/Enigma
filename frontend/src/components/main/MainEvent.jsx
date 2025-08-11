@@ -27,7 +27,7 @@ const UpcomingEvents = () => {
   }
 
   return (
-    <div className="bg-white px-4 md:px-6 pt-6 pb-12">
+    <div className="bg-gray-200 px-4 md:px-6 pt-6 pb-12">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-3xl sm:text-4xl font-bold text-center mb-2 text-blue-800 drop-shadow-md group-hover:scale-105 transition-transform duration-300">
             UPCOMING EVENTS
