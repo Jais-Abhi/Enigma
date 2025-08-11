@@ -55,7 +55,7 @@ const AdminDashboard = () => {
               Members
             </button>
           </div>
-          <p className="text-4xl font-semibold">Hey, {name}</p>
+          <p className="text-4xl font-semibold">Hey, {name.charAt(0).toUpperCase() + name.slice(1)}</p>
           <button
             className="bg-red-300 p-4 rounded-2xl font-bold"
             onClick={handleLogout}
