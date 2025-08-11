@@ -148,9 +148,9 @@ const AdminMemberDashboard = ({ onSuccess }) => {
 
         <input type="text" name="contactNo" value={formData.contactNo} onChange={handleChange} placeholder="Contact No" required className="w-full p-2 border border-gray-400 rounded focus:outline-none focus:ring-2 focus:ring-orange-400" />
         <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email" required className="w-full p-2 border border-gray-400 rounded focus:outline-none focus:ring-2 focus:ring-orange-400" />
-        <input type="text" name="linkedin" value={formData.linkedin} onChange={handleChange} placeholder="LinkedIn URL" className="w-full p-2 border border-gray-400 rounded focus:outline-none focus:ring-2 focus:ring-orange-400" />
-        <input type="text" name="github" value={formData.github} onChange={handleChange} placeholder="GitHub URL" className="w-full p-2 border border-gray-400 rounded focus:outline-none focus:ring-2 focus:ring-orange-400" />
-        <input type="file" accept="image/*" onChange={handleFileChange} className="w-full p-2 border border-gray-400 rounded focus:outline-none focus:ring-2 focus:ring-orange-400" />
+        <input type="text" name="linkedin" value={formData.linkedin} onChange={handleChange} placeholder="LinkedIn URL" required className="w-full p-2 border border-gray-400 rounded focus:outline-none focus:ring-2 focus:ring-orange-400" />
+        <input type="text" name="github" value={formData.github} onChange={handleChange} placeholder="GitHub URL" required className="w-full p-2 border border-gray-400 rounded focus:outline-none focus:ring-2 focus:ring-orange-400" />
+        <input type="file" accept="image/*" onChange={handleFileChange} required className="w-full p-2 border border-gray-400 rounded focus:outline-none focus:ring-2 focus:ring-orange-400" />
 
         <div className="col-span-2 text-right">
           <button type="submit" className="bg-blue-500 text-white px-6 py-2 rounded shadow">

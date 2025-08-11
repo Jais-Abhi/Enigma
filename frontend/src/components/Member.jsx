@@ -206,7 +206,7 @@ const MemberList = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <FaGithub className="hover:text-black" />
+                    <FaGithub className="hover:text-blue-700" />
                   </a>
                 )}
               </div>
