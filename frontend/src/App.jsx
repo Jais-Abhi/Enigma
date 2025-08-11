@@ -4,13 +4,27 @@ import store from "./store/store";
 import { Provider } from "react-redux";
 import { ThemeProvider } from "./context/ThemeContext"; // ✅ new import
 
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 function App() {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // animation speed
+      offset: 100,    // distance from top before triggering
+      once: true,     // animate only once
+    });
+  }, []);
+
   return (
-    <Provider store={store}>
-      <ThemeProvider>
+
+    <>
+      <Provider store={store}>
         <Body />
-      </ThemeProvider>
-    </Provider>
+      </Provider>
+    </>
+
   );
 }
 
