@@ -7,6 +7,7 @@ import authRouter from "./routes/auth/auth-route.js";
 import eventRouter from "./routes/event/event-route.js";
 import sliderRouter from "./routes/slider/slider-route.js";
 import memberRouter from "./routes/member/member-routes.js";
+import galleryRouter from "./routes/gallery/gallery-route.js";
 dotenv.config();
 
 const DBURL = process.env.DB_URL;
@@ -46,5 +47,6 @@ app.use("/api/auth", authRouter);
 app.use("/api/event", eventRouter);
 app.use("/api/slider", sliderRouter);
 app.use("/api/member", memberRouter);
+app.use("/api/gallery", galleryRouter);
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
 
