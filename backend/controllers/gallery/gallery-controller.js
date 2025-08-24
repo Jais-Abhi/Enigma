@@ -1,5 +1,5 @@
-import Gallery from "../../models/Gallery";
-import { imageUploadUtil } from "../../helpers/cloudinary";
+import Gallery from "../../models/Gallery.js"
+import { imageUploadUtil } from "../../helpers/cloudinary.js";
 
 // Create Gallery Image
 const createGalleryImage = async (req, res) => {

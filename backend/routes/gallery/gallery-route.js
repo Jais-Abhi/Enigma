@@ -1,5 +1,5 @@
 import express from "express";
-import { authMiddleware } from "../../controllers/auth/auth-controller";
+import { authMiddleware } from "../../controllers/auth/auth-controller.js";
 import { upload } from "../../helpers/cloudinary.js";
 import {
   createGalleryImage,
